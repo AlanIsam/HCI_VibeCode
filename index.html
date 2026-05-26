@@ -606,124 +606,179 @@
 
     <!-- 15–19. SETTINGS (Display / Bluetooth / Network / Time / System) -->
     <section id="screen-settings-display" class="screen">
-      <div class="screen-title"><i data-lucide="settings"></i> Settings &amp; Preferences</div>
       <div class="settings-layout">
-        <div class="settings-sidebar">
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-system')">System</button>
-          <button class="settings-nav-btn active">Display</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-bluetooth')">Bluetooth &amp; Devices</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-network')">Network &amp; Internet</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-time')">Time &amp; Language</button>
+        <aside class="settings-sidebar">
+          <div class="settings-sidebar-title">Settings<br>and Preferences</div>
+          <nav class="settings-sidebar-nav">
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-system')"><i data-lucide="settings-2"></i> System</button>
+            <button class="settings-nav-btn active"><i data-lucide="monitor"></i> Display</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-bluetooth')"><i data-lucide="bluetooth"></i> Bluetooth &amp; Devices</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-network')"><i data-lucide="wifi"></i> Network &amp; Internet</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-time')"><i data-lucide="clock"></i> Time &amp; Language</button>
+          </nav>
+        </aside>
+        <div class="settings-pane">
+          <div class="settings-pane-title">Display</div>
+          <div class="settings-section">
+            <div class="settings-section-label">Energy Display</div>
+            <div class="seg-pill">
+              <button class="seg-pill-btn active" onclick="switchToggle(this)">Battery</button>
+              <button class="seg-pill-btn" onclick="switchToggle(this)">Distance</button>
+            </div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-section-label">Distance</div>
+            <div class="seg-pill">
+              <button class="seg-pill-btn active" onclick="switchToggle(this)">Kilometer</button>
+              <button class="seg-pill-btn" onclick="switchToggle(this)">Miles</button>
+            </div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-section-label">Tire Pressure</div>
+            <div class="seg-pill">
+              <button class="seg-pill-btn active" onclick="switchToggle(this)">Bar</button>
+              <button class="seg-pill-btn" onclick="switchToggle(this)">Psi</button>
+            </div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-section-label">Brightness</div>
+            <input type="range" class="settings-slider" id="brightness-slider" min="10" max="100" value="80">
+          </div>
         </div>
-        <div class="settings-panel card">
-          <div class="settings-section-title">Display</div>
-          <div class="settings-group">
-            <div class="settings-group-title">Energy Display</div>
-            <div class="toggle-row"><button class="toggle-btn active" onclick="switchToggle(this)">Battery</button><button class="toggle-btn" onclick="switchToggle(this)">Distance</button></div>
+      </div>
+    </section>
+
+    <section id="screen-settings-system" class="screen">
+      <div class="settings-layout">
+        <aside class="settings-sidebar">
+          <div class="settings-sidebar-title">Settings<br>and Preferences</div>
+          <nav class="settings-sidebar-nav">
+            <button class="settings-nav-btn active"><i data-lucide="settings-2"></i> System</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-display')"><i data-lucide="monitor"></i> Display</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-bluetooth')"><i data-lucide="bluetooth"></i> Bluetooth &amp; Devices</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-network')"><i data-lucide="wifi"></i> Network &amp; Internet</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-time')"><i data-lucide="clock"></i> Time &amp; Language</button>
+          </nav>
+        </aside>
+        <div class="settings-pane">
+          <div class="settings-pane-title">System</div>
+          <div class="settings-section">
+            <div class="settings-section-label">Vehicle</div>
+            <div class="settings-item-row"><span class="settings-item-label">Vehicle Name</span><span style="color:var(--muted);font-size:14px">Snoopy EV</span></div>
+            <div class="settings-item-row"><span class="settings-item-label">VIN</span><span style="color:var(--muted);font-size:14px">SN2026EVHCI001</span></div>
+            <div class="settings-item-row"><span class="settings-item-label">Software Version</span><span style="color:var(--cyan);font-size:14px">v3.1.0</span></div>
+            <div class="settings-item-row"><span class="settings-item-label">Last Updated</span><span style="color:var(--muted);font-size:14px">2026-05-01</span></div>
           </div>
-          <div class="settings-group">
-            <div class="settings-group-title">Distance Unit</div>
-            <div class="toggle-row"><button class="toggle-btn" onclick="switchToggle(this)">Miles</button><button class="toggle-btn active" onclick="switchToggle(this)">Kilometer</button></div>
-          </div>
-          <div class="settings-group">
-            <div class="settings-group-title">Tire Pressure</div>
-            <div class="toggle-row"><button class="toggle-btn active" onclick="switchToggle(this)">Bar</button><button class="toggle-btn" onclick="switchToggle(this)">PSI</button></div>
-          </div>
-          <div class="settings-group">
-            <div class="settings-group-title">Brightness</div>
-            <input type="range" min="0" max="100" value="80" id="brightness-slider" style="margin-top:8px">
+          <div class="settings-section">
+            <div class="settings-section-label">Preferences</div>
+            <div class="settings-item-row"><span class="settings-item-label">Reset to Default</span><button style="background:rgba(255,82,82,0.15);border:1px solid var(--error);color:var(--error);padding:6px 16px;border-radius:var(--r-sm);cursor:pointer;font-family:var(--font-ui);font-size:14px">Reset</button></div>
           </div>
         </div>
       </div>
     </section>
 
     <section id="screen-settings-bluetooth" class="screen">
-      <div class="screen-title"><i data-lucide="settings"></i> Settings &amp; Preferences</div>
       <div class="settings-layout">
-        <div class="settings-sidebar">
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-system')">System</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-display')">Display</button>
-          <button class="settings-nav-btn active">Bluetooth &amp; Devices</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-network')">Network &amp; Internet</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-time')">Time &amp; Language</button>
-        </div>
-        <div class="settings-panel card">
-          <div class="settings-section-title">Bluetooth &amp; Devices</div>
-          <div class="settings-item-row"><span class="settings-item-label">Bluetooth</span><div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="settings-item-row"><span class="settings-item-label">📱 Justin's iPhone</span><span class="settings-item-value good">Connected</span></div>
-          <div class="settings-item-row"><span class="settings-item-label">🎧 AirPods Pro</span><span class="settings-item-value">Paired</span></div>
-          <div class="settings-item-row"><span class="settings-item-label">🔊 Car Speakers</span><span class="settings-item-value good">Active</span></div>
-          <div class="settings-group" style="margin-top:16px">
-            <div class="settings-group-title">Discoverable</div>
-            <div class="toggle-row"><button class="toggle-btn active" onclick="switchToggle(this)">On</button><button class="toggle-btn" onclick="switchToggle(this)">Off</button></div>
+        <aside class="settings-sidebar">
+          <div class="settings-sidebar-title">Settings<br>and Preferences</div>
+          <nav class="settings-sidebar-nav">
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-system')"><i data-lucide="settings-2"></i> System</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-display')"><i data-lucide="monitor"></i> Display</button>
+            <button class="settings-nav-btn active"><i data-lucide="bluetooth"></i> Bluetooth &amp; Devices</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-network')"><i data-lucide="wifi"></i> Network &amp; Internet</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-time')"><i data-lucide="clock"></i> Time &amp; Language</button>
+          </nav>
+        </aside>
+        <div class="settings-pane">
+          <div class="settings-pane-title">Bluetooth &amp; Devices</div>
+          <div class="settings-section">
+            <div class="settings-section-label">Bluetooth</div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Bluetooth</span>
+              <div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div>
+            </div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-section-label">Paired Devices</div>
+            <div class="settings-item-row"><span class="settings-item-label">Justin's iPhone</span><span style="color:var(--good);font-size:13px">Connected</span></div>
+            <div class="settings-item-row"><span class="settings-item-label">AirPods Pro</span><span style="color:var(--muted);font-size:13px">Paired</span></div>
+            <div class="settings-item-row"><span class="settings-item-label">BMW Audio</span><span style="color:var(--muted);font-size:13px">Paired</span></div>
           </div>
         </div>
       </div>
     </section>
 
     <section id="screen-settings-network" class="screen">
-      <div class="screen-title"><i data-lucide="settings"></i> Settings &amp; Preferences</div>
       <div class="settings-layout">
-        <div class="settings-sidebar">
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-system')">System</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-display')">Display</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-bluetooth')">Bluetooth &amp; Devices</button>
-          <button class="settings-nav-btn active">Network &amp; Internet</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-time')">Time &amp; Language</button>
-        </div>
-        <div class="settings-panel card">
-          <div class="settings-section-title">Network &amp; Internet</div>
-          <div class="settings-item-row"><span class="settings-item-label">Wi-Fi</span><div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="settings-item-row"><span class="settings-item-label">📶 Unimas_WiFi</span><span class="settings-item-value good">Connected</span></div>
-          <div class="settings-item-row"><span class="settings-item-label">📶 HOME_5G</span><span class="settings-item-value">Saved</span></div>
-          <div class="settings-item-row"><span class="settings-item-label">Mobile Hotspot</span><div class="settings-toggle-switch" onclick="this.classList.toggle('on')"></div></div>
-          <div class="settings-item-row"><span class="settings-item-label">Data Saver</span><div class="settings-toggle-switch" onclick="this.classList.toggle('on')"></div></div>
+        <aside class="settings-sidebar">
+          <div class="settings-sidebar-title">Settings<br>and Preferences</div>
+          <nav class="settings-sidebar-nav">
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-system')"><i data-lucide="settings-2"></i> System</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-display')"><i data-lucide="monitor"></i> Display</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-bluetooth')"><i data-lucide="bluetooth"></i> Bluetooth &amp; Devices</button>
+            <button class="settings-nav-btn active"><i data-lucide="wifi"></i> Network &amp; Internet</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-time')"><i data-lucide="clock"></i> Time &amp; Language</button>
+          </nav>
+        </aside>
+        <div class="settings-pane">
+          <div class="settings-pane-title">Network &amp; Internet</div>
+          <div class="settings-section">
+            <div class="settings-section-label">Wi-Fi</div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Wi-Fi</span>
+              <div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div>
+            </div>
+            <div class="settings-item-row"><span class="settings-item-label">UNIMAS_WIFI</span><span style="color:var(--good);font-size:13px">Connected</span></div>
+            <div class="settings-item-row"><span class="settings-item-label">Campus_5G</span><span style="color:var(--muted);font-size:13px">Available</span></div>
+            <div class="settings-item-row"><span class="settings-item-label">Snoopy_Hotspot</span><span style="color:var(--muted);font-size:13px">Available</span></div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-section-label">Mobile Data</div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Mobile Data</span>
+              <div class="settings-toggle-switch" onclick="this.classList.toggle('on')"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="screen-settings-time" class="screen">
-      <div class="screen-title"><i data-lucide="settings"></i> Settings &amp; Preferences</div>
       <div class="settings-layout">
-        <div class="settings-sidebar">
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-system')">System</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-display')">Display</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-bluetooth')">Bluetooth &amp; Devices</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-network')">Network &amp; Internet</button>
-          <button class="settings-nav-btn active">Time &amp; Language</button>
-        </div>
-        <div class="settings-panel card">
-          <div class="settings-section-title">Time &amp; Language</div>
-          <div class="settings-item-row"><span class="settings-item-label">Time Zone</span><span class="settings-item-value">GMT+8 Kuching</span></div>
-          <div class="settings-item-row"><span class="settings-item-label">24-Hour Format</span><div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="settings-item-row"><span class="settings-item-label">Auto Set Time</span><div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="settings-group" style="margin-top:16px">
-            <div class="settings-group-title">Language</div>
-            <div class="toggle-row"><button class="toggle-btn active" onclick="switchToggle(this)">English</button><button class="toggle-btn" onclick="switchToggle(this)">Bahasa</button><button class="toggle-btn" onclick="switchToggle(this)">中文</button></div>
+        <aside class="settings-sidebar">
+          <div class="settings-sidebar-title">Settings<br>and Preferences</div>
+          <nav class="settings-sidebar-nav">
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-system')"><i data-lucide="settings-2"></i> System</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-display')"><i data-lucide="monitor"></i> Display</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-bluetooth')"><i data-lucide="bluetooth"></i> Bluetooth &amp; Devices</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-network')"><i data-lucide="wifi"></i> Network &amp; Internet</button>
+            <button class="settings-nav-btn active"><i data-lucide="clock"></i> Time &amp; Language</button>
+          </nav>
+        </aside>
+        <div class="settings-pane">
+          <div class="settings-pane-title">Time &amp; Language</div>
+          <div class="settings-section">
+            <div class="settings-section-label">Time</div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Time Format</span>
+              <div class="seg-pill">
+                <button class="seg-pill-btn active" onclick="switchToggle(this)">24h</button>
+                <button class="seg-pill-btn" onclick="switchToggle(this)">12h</button>
+              </div>
+            </div>
+            <div class="settings-item-row"><span class="settings-item-label">Time Zone</span><span style="color:var(--muted);font-size:14px">Asia/Kuching (UTC+8)</span></div>
           </div>
-          <div class="settings-item-row"><span class="settings-item-label">Date Format</span><span class="settings-item-value">DD/MM/YYYY</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="screen-settings-system" class="screen">
-      <div class="screen-title"><i data-lucide="settings"></i> Settings &amp; Preferences</div>
-      <div class="settings-layout">
-        <div class="settings-sidebar">
-          <button class="settings-nav-btn active">System</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-display')">Display</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-bluetooth')">Bluetooth &amp; Devices</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-network')">Network &amp; Internet</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-time')">Time &amp; Language</button>
-        </div>
-        <div class="settings-panel card">
-          <div class="settings-section-title">System</div>
-          <div class="settings-item-row"><span class="settings-item-label">Software Version</span><span class="settings-item-value">v3.12.4</span></div>
-          <div class="settings-item-row"><span class="settings-item-label">Hardware Version</span><span class="settings-item-value">HW 3.0</span></div>
-          <div class="settings-item-row"><span class="settings-item-label">Vehicle ID</span><span class="settings-item-value">SC·M3·397FF</span></div>
-          <div class="settings-item-row"><span class="settings-item-label">Auto Update</span><div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="settings-item-row"><span class="settings-item-label">Diagnostics Sharing</span><div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="settings-item-row"><span class="settings-item-label">Factory Reset</span><span class="settings-item-value err" style="cursor:pointer">Reset</span></div>
+          <div class="settings-section">
+            <div class="settings-section-label">Language</div>
+            <div class="settings-item-row"><span class="settings-item-label">Display Language</span><span style="color:var(--muted);font-size:14px">English (US)</span></div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Date Format</span>
+              <div class="seg-pill">
+                <button class="seg-pill-btn active" onclick="switchToggle(this)">DD/MM</button>
+                <button class="seg-pill-btn" onclick="switchToggle(this)">MM/DD</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

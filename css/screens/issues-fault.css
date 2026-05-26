@@ -1,0 +1,52 @@
+/* ── ISSUES ── */
+.issues-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: calc(100% - 70px);
+  overflow-y: auto;
+}
+
+.issue-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+}
+
+.issue-name { flex: 1; font-size: 16px; }
+.issue-status { font-family: var(--font-data); font-size: 15px; font-weight: 600; }
+
+/* ── FAULT ── */
+.fault-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 16px;
+  height: calc(100% - 70px);
+}
+
+.fault-code-item {
+  background: rgba(255,82,82,0.1);
+  border: 1px solid rgba(255,82,82,0.3);
+  border-radius: var(--r-sm);
+  padding: 14px 16px;
+  margin-bottom: 8px;
+}
+
+.fault-code { font-family: var(--font-data); font-size: 16px; font-weight: 700; color: var(--error); margin-bottom: 4px; }
+.fault-desc { font-size: 14px; color: var(--text-dim); }
+
+.fault-detail { display: flex; flex-direction: column; gap: 8px; }
+
+.fault-detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.fault-detail-label { color: var(--text-dim); font-size: 15px; }
+.fault-detail-value { font-family: var(--font-data); font-size: 15px; font-weight: 600; }

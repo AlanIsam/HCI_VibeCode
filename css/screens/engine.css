@@ -1,0 +1,48 @@
+/* ── ENGINE SCREEN ── */
+.engine-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.engine-stat-card {
+  text-align: center;
+  padding: 16px;
+}
+
+.engine-stat-label { font-size: 13px; color: var(--text-dim); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+.engine-stat-value { font-family: var(--font-data); font-size: 28px; font-weight: 700; }
+
+.engine-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.engine-action-row {
+  display: flex;
+  gap: 14px;
+}
+
+.engine-action-btn {
+  flex: 1;
+  padding: 14px 20px;
+  border-radius: var(--r-sm);
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--trans);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.engine-action-btn:hover { border-color: var(--cyan); background: rgba(0,212,255,0.08); }
+.engine-action-btn svg { width: 20px; height: 20px; color: var(--cyan); }

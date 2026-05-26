@@ -1,0 +1,80 @@
+/* ── CHARGING STATIONS ── */
+.charging-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 16px;
+  height: calc(100% - 70px);
+}
+
+.station-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.station-list::-webkit-scrollbar { width: 4px; }
+.station-list::-webkit-scrollbar-track { background: transparent; }
+.station-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.station-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color var(--trans), background var(--trans);
+}
+
+.station-item:hover {
+  border-color: var(--border-hi);
+  background: var(--card-hover);
+}
+
+.station-item.selected { border-color: var(--cyan); }
+
+.station-name { font-size: 16px; font-weight: 600; margin-bottom: 3px; }
+.station-type { font-size: 12px; color: var(--text-dim); margin-bottom: 2px; }
+.station-addr { font-size: 13px; color: var(--text-dim); }
+.station-status-open { font-size: 13px; color: var(--good); margin: 4px 0; }
+.station-status-closed { font-size: 13px; color: var(--error); margin: 4px 0; }
+.station-specs { font-size: 13px; color: var(--text-dim); margin-bottom: 8px; }
+
+.station-actions { display: flex; gap: 8px; }
+.station-action-btn {
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color var(--trans), background var(--trans);
+}
+
+.station-action-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+.station-action-btn.primary { background: rgba(0,212,255,0.15); border-color: rgba(0,212,255,0.4); color: var(--cyan); }
+
+/* ── CHARGING MAP WITH ACTIVE STATE ── */
+.charging-nav-info {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(8,13,30,0.9);
+  border: 1px solid var(--border-hi);
+  border-radius: var(--r-sm);
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  backdrop-filter: blur(20px);
+  z-index: 5;
+  white-space: nowrap;
+}
+
+.charging-nav-info svg { width: 18px; height: 18px; color: var(--cyan); }
+.charging-nav-stat { font-family: var(--font-data); font-size: 14px; }
+.charging-nav-stat span { color: var(--cyan); font-weight: 700; margin-right: 4px; }

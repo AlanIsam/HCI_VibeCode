@@ -13,6 +13,7 @@
   padding: 28px 20px;
   display: flex;
   flex-direction: column;
+  gap: 12px;
   backdrop-filter: blur(20px);
 }
 
@@ -73,7 +74,7 @@
 }
 
 .settings-pane-title {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   color: var(--text);
   margin-bottom: 28px;
@@ -145,3 +146,23 @@
 
 /* stub for Task 6 */
 .settings-slider { width: 100%; max-width: 320px; accent-color: var(--cyan); }
+
+.settings-item-value {
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+.settings-item-value.accent {
+  color: var(--cyan);
+}
+
+.settings-danger-btn {
+  background: rgba(244, 67, 54, 0.15);
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  padding: 6px 16px;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+}

@@ -9,6 +9,10 @@ function updateClock() {
   const timeStr = `${hh}:${mm}`;
   ['live-time','status-time'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = timeStr; });
   ['status-day','status-day-home'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = days[now.getDay()]; });
+  const dateEl = document.getElementById('settings-date-display');
+  if (dateEl) {
+    dateEl.textContent = new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  }
 }
 setInterval(updateClock, 1000);
 

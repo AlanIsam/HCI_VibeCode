@@ -20,6 +20,13 @@
   --bar-h: 56px;
   --font-ui: 'Rajdhani', sans-serif;
   --font-data: 'JetBrains Mono', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --text-xs: 11px;
+  --text-sm: 13px;
+  --text-md: 15px;
+  --text-lg: 18px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
   --dash-w: 1366px;
   --dash-h: 1024px;
   --r: 14px;

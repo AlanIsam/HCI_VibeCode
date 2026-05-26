@@ -1,0 +1,20 @@
+# AI assistant artifacts
+.claude/
+.cursor/
+.aider*
+.roo/
+.copilot*
+
+# Planning / spec docs (AI-generated)
+docs/superpowers/
+*.plan.md
+AGENTS.md
+CLAUDE.md
+
+# OS / editor junk
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~

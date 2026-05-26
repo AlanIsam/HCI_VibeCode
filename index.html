@@ -781,10 +781,10 @@
     <div class="vol-bar-bg"><div class="vol-bar-fill" style="width:80%"></div></div>
   </div>
 
-  <!-- ── BOTTOM NAV ── 8 buttons matching Figma layout ── -->
+  <!-- ── BOTTOM DOCK ── -->
   <nav id="bottom-nav">
-    <!-- Left: audio controls -->
-    <div class="nav-group">
+    <div class="nav-dock">
+      <!-- Audio controls -->
       <button class="nav-btn" id="btn-mute" onclick="toggleMute()" title="Mute">
         <i data-lucide="volume-x"></i>
       </button>
@@ -794,9 +794,8 @@
       <button class="nav-btn" onclick="adjustVolume(10)" title="Volume Up">
         <i data-lucide="volume-2"></i>
       </button>
-    </div>
-    <!-- Centre: system navigation -->
-    <div class="nav-group">
+      <div class="nav-dock-divider"></div>
+      <!-- System navigation -->
       <button class="nav-btn" onclick="openRecentApps()" title="Recent Apps">
         <i data-lucide="layout-grid"></i>
       </button>
@@ -806,9 +805,8 @@
       <button class="nav-btn large" onclick="goBack()" title="Back">
         <i data-lucide="undo-2"></i>
       </button>
-    </div>
-    <!-- Right: climate + settings -->
-    <div class="nav-group">
+      <div class="nav-dock-divider"></div>
+      <!-- Quick access -->
       <button class="nav-btn" onclick="navigate('screen-climate-cabin')" title="Climate Control">
         <i data-lucide="wind"></i>
       </button>

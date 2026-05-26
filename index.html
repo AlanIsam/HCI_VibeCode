@@ -666,7 +666,9 @@
             <div class="settings-section-label">Vehicle</div>
             <div class="settings-item-row"><span class="settings-item-label">Vehicle Name</span><span style="color:var(--muted);font-size:14px">Snoopy EV</span></div>
             <div class="settings-item-row"><span class="settings-item-label">VIN</span><span style="color:var(--muted);font-size:14px">SN2026EVHCI001</span></div>
-            <div class="settings-item-row"><span class="settings-item-label">Software Version</span><span style="color:var(--cyan);font-size:14px">v3.1.0</span></div>
+            <div class="settings-item-row"><span class="settings-item-label">Firmware Version</span><span style="color:var(--cyan);font-size:14px">v3.1.0</span></div>
+            <div class="settings-item-row"><span class="settings-item-label">App Version</span><span style="color:var(--muted);font-size:14px">v2.4.1</span></div>
+            <div class="settings-item-row"><span class="settings-item-label">Storage</span><span style="color:var(--muted);font-size:14px">14.2 GB / 32 GB</span></div>
             <div class="settings-item-row"><span class="settings-item-label">Last Updated</span><span style="color:var(--muted);font-size:14px">2026-05-01</span></div>
           </div>
           <div class="settings-section">
@@ -700,9 +702,18 @@
           </div>
           <div class="settings-section">
             <div class="settings-section-label">Paired Devices</div>
-            <div class="settings-item-row"><span class="settings-item-label">Justin's iPhone</span><span style="color:var(--good);font-size:13px">Connected</span></div>
-            <div class="settings-item-row"><span class="settings-item-label">AirPods Pro</span><span style="color:var(--muted);font-size:13px">Paired</span></div>
-            <div class="settings-item-row"><span class="settings-item-label">BMW Audio</span><span style="color:var(--muted);font-size:13px">Paired</span></div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Justin's iPhone</span>
+              <div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div>
+            </div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">AirPods Pro</span>
+              <div class="settings-toggle-switch" onclick="this.classList.toggle('on')"></div>
+            </div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">BMW Audio</span>
+              <div class="settings-toggle-switch" onclick="this.classList.toggle('on')"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -728,9 +739,18 @@
               <span class="settings-item-label">Wi-Fi</span>
               <div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div>
             </div>
-            <div class="settings-item-row"><span class="settings-item-label">UNIMAS_WIFI</span><span style="color:var(--good);font-size:13px">Connected</span></div>
-            <div class="settings-item-row"><span class="settings-item-label">Campus_5G</span><span style="color:var(--muted);font-size:13px">Available</span></div>
-            <div class="settings-item-row"><span class="settings-item-label">Snoopy_Hotspot</span><span style="color:var(--muted);font-size:13px">Available</span></div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">UNIMAS_WIFI</span>
+              <div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div>
+            </div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Campus_5G</span>
+              <div class="settings-toggle-switch" onclick="this.classList.toggle('on')"></div>
+            </div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Snoopy_Hotspot</span>
+              <div class="settings-toggle-switch" onclick="this.classList.toggle('on')"></div>
+            </div>
           </div>
           <div class="settings-section">
             <div class="settings-section-label">Mobile Data</div>
@@ -759,6 +779,7 @@
           <div class="settings-pane-title">Time &amp; Language</div>
           <div class="settings-section">
             <div class="settings-section-label">Time</div>
+            <div class="settings-item-row"><span class="settings-item-label">Current Date</span><span id="settings-date-display" style="color:var(--muted);font-size:14px">Wednesday, 27 May 2026</span></div>
             <div class="settings-item-row">
               <span class="settings-item-label">Time Format</span>
               <div class="seg-pill">
@@ -767,6 +788,10 @@
               </div>
             </div>
             <div class="settings-item-row"><span class="settings-item-label">Time Zone</span><span style="color:var(--muted);font-size:14px">Asia/Kuching (UTC+8)</span></div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Auto-Sync Time</span>
+              <div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div>
+            </div>
           </div>
           <div class="settings-section">
             <div class="settings-section-label">Language</div>

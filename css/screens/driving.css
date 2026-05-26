@@ -155,5 +155,19 @@
 
 .mode-select-btns { display: flex; flex-direction: column; gap: 10px; }
 
+/* Second .mode-btn block — cascades over the first with tighter sizing for the mode-select panel */
+.mode-btn {
+  padding: 14px 20px;
+  border-radius: var(--r-sm);
+  font-size: 17px;
+  letter-spacing: 0.07em;
+}
+
+.mode-btn:hover { background: var(--card-hover); }
+
+.mode-btn.active {
+  background: linear-gradient(135deg, rgba(0,212,255,0.16), rgba(61,111,255,0.14));
+}
+
 .mode-btn .mode-sub { font-family: var(--font-data); font-size: 12px; color: var(--text-dim); }
 .mode-btn.active .mode-sub { color: var(--cyan); }

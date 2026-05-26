@@ -8,7 +8,7 @@ function updateClock() {
   const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   const timeStr = `${hh}:${mm}`;
   ['live-time','status-time'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = timeStr; });
-  ['status-day','status-day-home'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = days[now.getDay()]; });
+  ['status-day'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = days[now.getDay()]; });
   var dayHomeEl = document.getElementById('status-day-home');
   if (dayHomeEl) dayHomeEl.textContent = now.toLocaleDateString('en-GB', { weekday: 'long' });
   var dateHomeEl = document.getElementById('status-date-home');

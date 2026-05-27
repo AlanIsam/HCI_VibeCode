@@ -840,35 +840,39 @@
   <!-- ── BOTTOM DOCK ── -->
   <nav id="bottom-nav">
     <div class="nav-dock">
-      <!-- Audio controls -->
-      <button class="nav-btn" id="btn-mute" onclick="toggleMute()" title="Mute">
-        <i data-lucide="volume-x"></i>
-      </button>
-      <button class="nav-btn" onclick="adjustVolume(-10)" title="Volume Down">
-        <i data-lucide="volume-1"></i>
-      </button>
-      <button class="nav-btn" onclick="adjustVolume(10)" title="Volume Up">
-        <i data-lucide="volume-2"></i>
-      </button>
-      <div class="nav-dock-divider"></div>
-      <!-- System navigation -->
-      <button class="nav-btn" onclick="openRecentApps()" title="Recent Apps">
-        <i data-lucide="layout-grid"></i>
-      </button>
-      <button class="nav-btn large" onclick="navigate('screen-home')" title="Home">
-        <i data-lucide="home"></i>
-      </button>
-      <button class="nav-btn large" onclick="goBack()" title="Back">
-        <i data-lucide="undo-2"></i>
-      </button>
-      <div class="nav-dock-divider"></div>
-      <!-- Quick access -->
-      <button class="nav-btn" onclick="navigate('screen-climate-cabin')" title="Climate Control">
-        <i data-lucide="wind"></i>
-      </button>
-      <button class="nav-btn" onclick="navigate('screen-settings-display')" title="Settings">
-        <i data-lucide="settings"></i>
-      </button>
+      <!-- Left: Volume controls -->
+      <div class="dock-group">
+        <button class="nav-btn" id="btn-mute" onclick="toggleMute()" title="Mute">
+          <i data-lucide="volume-x"></i>
+        </button>
+        <button class="nav-btn" onclick="adjustVolume(-10)" title="Volume Down">
+          <i data-lucide="volume-1"></i>
+        </button>
+        <button class="nav-btn" onclick="adjustVolume(10)" title="Volume Up">
+          <i data-lucide="volume-2"></i>
+        </button>
+      </div>
+      <!-- Center: System navigation -->
+      <div class="dock-group">
+        <button class="nav-btn" onclick="openRecentApps()" title="Recent Apps">
+          <i data-lucide="layout-grid"></i>
+        </button>
+        <button class="nav-btn large" onclick="navigate('screen-home')" title="Home">
+          <i data-lucide="home"></i>
+        </button>
+        <button class="nav-btn large" onclick="goBack()" title="Back">
+          <i data-lucide="undo-2"></i>
+        </button>
+      </div>
+      <!-- Right: Quick access -->
+      <div class="dock-group">
+        <button class="nav-btn" onclick="navigate('screen-climate-cabin')" title="Climate Control">
+          <i data-lucide="wind"></i>
+        </button>
+        <button class="nav-btn" onclick="navigate('screen-settings-display')" title="Settings">
+          <i data-lucide="settings"></i>
+        </button>
+      </div>
     </div>
   </nav>
 

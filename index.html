@@ -530,13 +530,10 @@
         <div class="card ent-tile" onclick="navigate('screen-youtube')"><i data-lucide="youtube"></i><div class="ent-tile-label">YouTube</div></div>
         <div class="card ent-tile" onclick="navigate('screen-music')"><i data-lucide="radio"></i><div class="ent-tile-label">Radio</div></div>
         <div class="card ent-tile" onclick="navigate('screen-music')"><i data-lucide="mic-2"></i><div class="ent-tile-label">Podcast</div></div>
-        <div class="card ent-tile" onclick="navigate('screen-youtube')"><i data-lucide="globe"></i><div class="ent-tile-label">Browser</div></div>
-        <div class="card ent-tile" style="background:linear-gradient(135deg,rgba(0,212,255,0.1),rgba(61,111,255,0.1));border-color:rgba(0,212,255,0.2)" onclick="navigate('screen-music')">
-          <i data-lucide="volume-2" style="color:var(--cyan)"></i>
-          <div class="ent-tile-label">Now Playing</div>
-          <div id="now-playing-text" style="font-size:12px;color:var(--text-dim);text-align:center">Starboy — The Weeknd</div>
-        </div>
+        <div class="card ent-tile" onclick="navigate('screen-settings-bluetooth')"><i data-lucide="bluetooth"></i><div class="ent-tile-label">Bluetooth Audio</div></div>
+        <div class="card ent-tile" onclick="navigate('screen-music')"><i data-lucide="sliders"></i><div class="ent-tile-label">Equalizer</div></div>
       </div>
+      <div id="now-playing-text" class="ent-now-playing">🎵 Blinding Lights – The Weeknd</div>
     </section>
 
     <!-- 13. MUSIC -->
@@ -553,9 +550,9 @@
           </div>
           <div class="music-controls">
             <button class="music-ctrl-btn" onclick="prevTrack()"><i data-lucide="skip-back"></i></button>
-            <button class="music-ctrl-btn" onclick="prevTrack()"><i data-lucide="rewind"></i></button>
+            <button class="music-ctrl-btn" id="shuffle-btn" onclick="toggleShuffle()"><i data-lucide="shuffle"></i></button>
             <button class="music-ctrl-btn play" id="play-btn" onclick="togglePlay()"><i data-lucide="play"></i></button>
-            <button class="music-ctrl-btn" onclick="nextTrack()"><i data-lucide="fast-forward"></i></button>
+            <button class="music-ctrl-btn" id="repeat-btn" onclick="toggleRepeat()"><i data-lucide="repeat"></i></button>
             <button class="music-ctrl-btn" onclick="nextTrack()"><i data-lucide="skip-forward"></i></button>
           </div>
         </div>

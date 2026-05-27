@@ -1,0 +1,161 @@
+/* ── Driving Mode ── */
+#screen-driving {
+  padding: var(--gap);
+  display: flex;
+  flex-direction: column;
+}
+
+.driving-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--gap);
+  flex: 1;
+  min-height: 0;
+}
+
+/* Left: car panel */
+.driving-car-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.driving-car-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(160deg, rgba(61,111,255,0.18) 0%, var(--panel) 70%);
+}
+
+.driving-car-visual {
+  font-size: 96px;
+  line-height: 1;
+  filter: drop-shadow(0 8px 24px rgba(0,212,255,0.3));
+}
+
+.driving-car-label {
+  font-size: var(--text-md);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.driving-mode-badge {
+  background: rgba(0,212,255,0.15);
+  border: 1px solid rgba(0,212,255,0.4);
+  border-radius: var(--r-pill);
+  padding: 6px 18px;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 0.1em;
+  font-family: var(--font-data);
+}
+
+/* Right: mode selector */
+.driving-mode-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.driving-mode-title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.driving-mode-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  color: var(--text);
+  font-family: var(--font-ui);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s, border-color 0.2s;
+  flex: 1;
+}
+
+.mode-btn:hover {
+  background: rgba(22,46,90,1);
+  border-color: rgba(0,212,255,0.2);
+}
+
+.mode-btn.active {
+  background: rgba(0, 212, 255, 0.15);
+  border-color: rgba(0, 212, 255, 0.6);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.15);
+}
+
+.mode-btn svg {
+  width: 24px;
+  height: 24px;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.mode-btn.active svg {
+  color: var(--cyan);
+}
+
+.mode-btn-name {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  flex: 1;
+}
+
+.mode-btn-sub {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  align-self: center;
+}
+
+/* Mode stats */
+.driving-mode-stats {
+  display: flex;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.mode-stat-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  padding: 12px 8px;
+  border-right: 1px solid var(--border);
+}
+
+.mode-stat-row:last-child { border-right: none; }
+
+.mode-stat-label {
+  font-size: var(--text-xs);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.mode-stat-val {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  font-family: var(--font-data);
+  color: var(--cyan);
+}

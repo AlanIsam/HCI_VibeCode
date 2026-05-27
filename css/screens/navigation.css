@@ -1,0 +1,310 @@
+/* ── Navigation Screen ── */
+#screen-navigation {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.nav-view {
+  display: none;
+  flex: 1;
+  overflow: hidden;
+}
+
+.nav-view.active {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* ── Select Location View ── */
+.nav-select-layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  flex: 1;
+  overflow: hidden;
+  gap: 0;
+}
+
+.location-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  overflow: hidden;
+}
+
+#screen-navigation .screen-title {
+  padding: 16px 16px 0;
+  flex-shrink: 0;
+}
+
+/* Location search bar */
+.location-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 10px 16px;
+  color: var(--muted);
+  font-size: var(--text-md);
+  flex-shrink: 0;
+}
+
+.location-search svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Location list */
+.location-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-y: auto;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.location-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: var(--r-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.location-item:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: var(--border);
+}
+
+.location-item.active {
+  background: rgba(0,212,255,0.08);
+  border-color: rgba(0,212,255,0.3);
+}
+
+.location-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.location-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.location-name {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.location-detail {
+  font-size: var(--text-xs);
+  color: var(--muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.location-dist {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--cyan);
+  font-family: var(--font-data);
+  flex-shrink: 0;
+  background: rgba(0,212,255,0.1);
+  padding: 3px 8px;
+  border-radius: var(--r-pill);
+  border: 1px solid rgba(0,212,255,0.2);
+}
+
+/* Start / Select button */
+.set-cabin-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 20px;
+  background: var(--cyan);
+  color: var(--bg);
+  border: none;
+  border-radius: var(--r-pill);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+
+.set-cabin-btn:disabled {
+  background: var(--panel);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.set-cabin-btn:not(:disabled):hover {
+  opacity: 0.88;
+}
+
+/* Map container */
+.map-container {
+  flex: 1;
+  position: relative;
+  min-height: 0;
+}
+
+/* ── Active Navigation View ── */
+.nav-active-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+}
+
+.speed-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.speed-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  flex-shrink: 0;
+}
+
+.speed-label {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.speed-value {
+  font-size: 64px;
+  font-weight: 700;
+  font-family: var(--font-data);
+  color: var(--cyan);
+  line-height: 1;
+}
+
+.speed-unit {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.speed-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.speed-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-md);
+  color: var(--text);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.speed-stat:last-child { border-bottom: none; }
+
+.speed-stat svg {
+  width: 16px;
+  height: 16px;
+  color: var(--cyan);
+  flex-shrink: 0;
+}
+
+.nav-stop-btn {
+  width: 100%;
+  padding: 12px;
+  background: rgba(244,67,54,0.15);
+  border: 1px solid var(--danger);
+  border-radius: var(--r-pill);
+  color: var(--danger);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+.nav-stop-btn:hover {
+  background: rgba(244,67,54,0.25);
+}
+
+.map-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-instruction {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(10,24,56,0.88);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 10px 20px;
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+.nav-instruction svg {
+  width: 18px;
+  height: 18px;
+  color: var(--cyan);
+  flex-shrink: 0;
+}
+
+.nav-instruction-text {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--text);
+}

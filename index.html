@@ -5,7 +5,20 @@
   <meta name="viewport" content="width=1366">
   <title>Snoopy — HCI Dashboard</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/screens/home.css">
+  <link rel="stylesheet" href="css/screens/battery.css">
+  <link rel="stylesheet" href="css/screens/charging.css">
+  <link rel="stylesheet" href="css/screens/navigation.css">
+  <link rel="stylesheet" href="css/screens/climate.css">
+  <link rel="stylesheet" href="css/screens/driving.css">
+  <link rel="stylesheet" href="css/screens/engine.css">
+  <link rel="stylesheet" href="css/screens/performance.css">
+  <link rel="stylesheet" href="css/screens/issues-fault.css">
+  <link rel="stylesheet" href="css/screens/entertainment.css">
+  <link rel="stylesheet" href="css/screens/settings.css">
 </head>
 <body>
 <div id="dashboard">
@@ -28,79 +41,88 @@
 
     <!-- 1. HOME -->
     <section id="screen-home" class="screen active">
-      <div class="home-grid">
-        <!-- Weather: col 1, rows 1-2 -->
-        <div class="card home-weather card-clickable">
-          <div class="weather-icon-bg">⛅</div>
-          <div class="weather-info">
-            <div class="weather-city">Weather · Kuching</div>
-            <div class="weather-temp">28°C</div>
-            <div class="weather-cond">Partly Cloudy</div>
-          </div>
-        </div>
-        <!-- Clock: col 2, row 1 -->
-        <div class="card home-clock">
-          <div class="clock-day" id="status-day-home">Monday</div>
-          <div class="clock-time" id="live-time">12:37</div>
-        </div>
-        <!-- Status: col 3, row 1 -->
-        <div class="card home-status">
-          <i data-lucide="check-circle-2"></i>
-          <div class="status-main">No issues detected!</div>
-          <div class="status-sub">You're good to go!</div>
-        </div>
-        <!-- Driving Mode: col 2, row 2 -->
-        <div class="card home-tile home-tile-driving card-clickable" onclick="navigate('screen-driving')">
-          <i data-lucide="gauge"></i><span>Driving Mode</span>
-        </div>
-        <!-- Entertainment: col 3, row 2 -->
-        <div class="card home-tile home-tile-ent card-clickable" onclick="toggleEntSidebar()">
-          <i data-lucide="music-2"></i><span>Entertainment</span>
-        </div>
-        <!-- Engine Status: col 1, row 3 -->
-        <div class="card home-tile home-tile-engine card-clickable" onclick="navigate('screen-engine')">
-          <i data-lucide="cpu"></i><span>Engine Status</span>
-        </div>
-        <!-- Energy: col 2, row 3 -->
-        <div class="card home-tile home-tile-energy card-clickable" onclick="navigate('screen-battery')">
-          <i data-lucide="zap"></i><span>Energy</span>
-        </div>
-        <!-- Navigation: col 3, row 3 -->
-        <div class="card home-tile home-tile-nav card-clickable" onclick="navigate('screen-navigation')">
-          <i data-lucide="navigation-2"></i><span>Navigation</span>
-        </div>
+  <div class="home-grid">
+    <!-- Weather card — tall, col 1 rows 1-2 -->
+    <div class="card home-weather card-clickable">
+      <div class="weather-icon-bg">⛅</div>
+      <div class="weather-info">
+        <div class="weather-city"><i data-lucide="map-pin"></i> Kuching, Sarawak</div>
+        <div class="weather-temp">28°C</div>
+        <div class="weather-cond">Partly Cloudy</div>
+        <div class="weather-humidity"><i data-lucide="droplets"></i> 78% humidity</div>
       </div>
-    </section>
+    </div>
+    <!-- Clock card — col 2 row 1 -->
+    <div class="card home-clock">
+      <div class="clock-day" id="status-day-home">Monday</div>
+      <div class="clock-time" id="live-time">12:37</div>
+      <div class="clock-date" id="status-date-home">27 May 2026</div>
+    </div>
+    <!-- Status card — col 3 row 1 -->
+    <div class="card home-status card-clickable" onclick="navigate('screen-issues')">
+      <i data-lucide="check-circle-2"></i>
+      <div class="status-main">All Systems Good</div>
+      <div class="status-sub">No issues detected · Tap to review</div>
+    </div>
+    <!-- Quick-access tiles — rows 2-3 cols 1-3 (weather takes col 1 row 2) -->
+    <div class="card home-tile home-tile-driving card-clickable" onclick="navigate('screen-driving')">
+      <i data-lucide="gauge"></i><span>Driving Mode</span>
+    </div>
+    <div class="card home-tile home-tile-ent card-clickable" onclick="toggleEntSidebar()">
+      <i data-lucide="music-2"></i><span>Entertainment</span>
+    </div>
+    <div class="card home-tile home-tile-engine card-clickable" onclick="navigate('screen-engine')">
+      <i data-lucide="cpu"></i><span>Engine Status</span>
+    </div>
+    <div class="card home-tile home-tile-energy card-clickable" onclick="navigate('screen-battery')">
+      <i data-lucide="zap"></i><span>Energy</span>
+    </div>
+    <div class="card home-tile home-tile-nav card-clickable" onclick="navigate('screen-navigation')">
+      <i data-lucide="navigation-2"></i><span>Navigation</span>
+    </div>
+  </div>
+</section>
 
     <!-- 2. BATTERY -->
     <section id="screen-battery" class="screen">
       <div class="screen-title"><i data-lucide="battery-charging"></i> Battery Status &amp; Charging</div>
       <div class="battery-grid">
-        <div class="card" style="grid-column:1;grid-row:1/3">
-          <div class="card-title">Key Components</div>
-          <div class="comp-row"><i data-lucide="activity"></i><div class="comp-name">Battery Health</div><div class="comp-val">95%</div></div>
-          <div class="comp-row"><i data-lucide="thermometer"></i><div class="comp-name">Motor Temperature</div><div class="comp-val">45°C <span class="good">Normal</span></div></div>
-          <div class="comp-row"><i data-lucide="cpu"></i><div class="comp-name">Inverter Temp</div><div class="comp-val">52°C <span class="good">Normal</span></div></div>
-          <div class="comp-row" style="margin-top:20px;border-top:1px solid var(--border);padding-top:14px"><i data-lucide="zap"></i><div class="comp-name">Battery Remaining</div><div class="comp-val" style="color:var(--cyan)">80%</div></div>
-          <div class="comp-row"><i data-lucide="map-pin"></i><div class="comp-name">Remaining Distance</div><div class="comp-val" style="color:var(--cyan)">105 KM</div></div>
-          <div class="comp-row"><i data-lucide="milestone"></i><div class="comp-name">Distance Travelled</div><div class="comp-val">10,000 KM</div></div>
+        <!-- Left: Key Components Status -->
+        <div class="card battery-components">
+          <div class="card-title battery-card-title"><i data-lucide="cpu"></i> Key Components Status</div>
+          <div class="comp-row"><i data-lucide="battery-full"></i><div class="comp-name">Battery Health</div><div class="comp-val">95%</div></div>
+          <div class="comp-row"><i data-lucide="thermometer"></i><div class="comp-name">Motor Temperature</div><div class="comp-val">45°C <span style="color:var(--good)">Normal</span></div></div>
+          <div class="comp-row"><i data-lucide="zap"></i><div class="comp-name">Inverter Temperature</div><div class="comp-val">52°C <span style="color:var(--good)">Normal</span></div></div>
         </div>
-        <div class="card" style="grid-column:2;grid-row:1;display:flex;align-items:center;justify-content:center">
-          <svg width="200" height="200" viewBox="0 0 200 200">
-            <defs>
-              <linearGradient id="battGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#3d6fff"/><stop offset="100%" stop-color="#00d4ff"/>
-              </linearGradient>
-            </defs>
-            <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="16"/>
-            <circle cx="100" cy="100" r="80" fill="none" stroke="url(#battGrad)" stroke-width="16" stroke-linecap="round" stroke-dasharray="502" stroke-dashoffset="100" transform="rotate(-90 100 100)"/>
-            <text x="100" y="92" text-anchor="middle" fill="#e8eaf6" font-family="JetBrains Mono,monospace" font-size="36" font-weight="700">80%</text>
-            <text x="100" y="116" text-anchor="middle" fill="rgba(232,234,246,0.5)" font-family="Rajdhani,sans-serif" font-size="14">Battery</text>
-          </svg>
+        <!-- Right col top: Battery gauge + Vehicle Status -->
+        <div class="card battery-status-card">
+          <div class="card-title battery-card-title"><i data-lucide="gauge"></i> Vehicle Status</div>
+          <div class="battery-gauge-row">
+            <svg width="120" height="120" viewBox="0 0 120 120" class="battery-gauge-svg">
+              <defs>
+                <linearGradient id="battGrad2" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#3d6fff"/><stop offset="100%" stop-color="#00d4ff"/>
+                </linearGradient>
+              </defs>
+              <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
+              <circle cx="60" cy="60" r="48" fill="none" stroke="url(#battGrad2)" stroke-width="10" stroke-linecap="round" stroke-dasharray="301" stroke-dashoffset="60" transform="rotate(-90 60 60)"/>
+              <text x="60" y="55" text-anchor="middle" fill="#e8eaf6" font-family="JetBrains Mono,monospace" font-size="22" font-weight="700">80%</text>
+              <text x="60" y="70" text-anchor="middle" fill="rgba(232,234,246,0.5)" font-family="Rajdhani,sans-serif" font-size="11">Battery</text>
+            </svg>
+            <div class="battery-stat-list">
+              <div class="battery-stat-row"><span class="battery-stat-label">Battery Remaining</span><span class="battery-stat-val" style="color:var(--cyan)">80%</span></div>
+              <div class="battery-stat-row"><span class="battery-stat-label">Remaining Distance</span><span class="battery-stat-val" style="color:var(--cyan)">105 KM</span></div>
+              <div class="battery-stat-row"><span class="battery-stat-label">Distance Travelled</span><span class="battery-stat-val">10,000 KM</span></div>
+            </div>
+          </div>
         </div>
-        <div class="card charge-btn card-clickable" style="grid-column:2;grid-row:2" onclick="navigate('screen-charging')">
-          <div><div class="charge-btn-text">Find Nearest Charging Station</div><div style="font-size:13px;color:var(--text-dim);margin-top:4px">3 stations nearby</div></div>
-          <i data-lucide="map-pin" style="width:36px;height:36px;color:var(--cyan)"></i>
+        <!-- Right col bottom: Find Charging CTA -->
+        <div class="card battery-charge-cta card-clickable" onclick="navigate('screen-charging')">
+          <div class="battery-cta-text">
+            <div class="battery-cta-title">Find Nearest Charging Station</div>
+            <div class="battery-cta-sub">3 stations nearby</div>
+          </div>
+          <i data-lucide="map-pin" style="width:32px;height:32px;color:var(--cyan)"></i>
         </div>
       </div>
     </section>
@@ -319,103 +341,41 @@
       </div>
     </section>
 
-    <!-- 7. DRIVING MODE -->
+    <!-- 6. DRIVING MODE -->
     <section id="screen-driving" class="screen">
-      <div class="screen-title"><i data-lucide="gauge"></i> Driving Mode</div>
       <div class="driving-layout">
-        <!-- Car SVG: Tesla Model 3 style side profile -->
-        <div class="driving-car-wrap">
-          <div class="car-stage">
-            <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="cBody" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#2d4fc5"/><stop offset="65%" stop-color="#1e3499"/><stop offset="100%" stop-color="#0d1a4f"/>
-                </linearGradient>
-                <linearGradient id="cRoof" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#3a55d5"/><stop offset="100%" stop-color="#1e3499"/>
-                </linearGradient>
-                <linearGradient id="cGlass" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="rgba(160,210,255,0.25)"/><stop offset="100%" stop-color="rgba(80,140,200,0.08)"/>
-                </linearGradient>
-                <radialGradient id="cWheel" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#2a2a3a"/><stop offset="75%" stop-color="#0d0d14"/><stop offset="100%" stop-color="#1a1a28"/>
-                </radialGradient>
-                <filter id="headGlow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-              </defs>
-              <!-- Ground shadow -->
-              <ellipse cx="280" cy="190" rx="238" ry="9" fill="rgba(0,0,0,0.45)"/>
-              <!-- Body lower sill -->
-              <path d="M42 148 Q45 128 65 118 L95 104 L120 84 Q148 62 192 55 L318 53 Q368 53 408 62 L445 78 L478 104 L500 118 Q515 127 518 148 L518 162 Q518 168 512 170 L48 170 Q42 168 42 162 Z" fill="url(#cBody)"/>
-              <!-- Roof -->
-              <path d="M127 104 Q154 64 194 56 L318 54 Q372 54 412 64 L450 104 Z" fill="url(#cRoof)"/>
-              <!-- Front windshield -->
-              <path d="M132 102 Q160 68 197 60 L286 58 L286 102 Z" fill="url(#cGlass)" stroke="rgba(200,230,255,0.18)" stroke-width="1"/>
-              <!-- Rear window -->
-              <path d="M296 58 L410 62 Q440 70 450 102 L296 102 Z" fill="url(#cGlass)" stroke="rgba(200,230,255,0.18)" stroke-width="1"/>
-              <!-- Center pillar -->
-              <line x1="286" y1="58" x2="286" y2="170" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
-              <!-- Door seams -->
-              <line x1="132" y1="102" x2="132" y2="170" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-              <line x1="450" y1="102" x2="450" y2="170" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-              <!-- Door handles -->
-              <rect x="195" y="128" width="28" height="6" rx="3" fill="rgba(255,255,255,0.18)"/>
-              <rect x="340" y="128" width="28" height="6" rx="3" fill="rgba(255,255,255,0.18)"/>
-              <!-- Front wheel arch + wheel -->
-              <ellipse cx="136" cy="170" rx="35" ry="8" fill="rgba(0,0,0,0.3)"/>
-              <circle cx="136" cy="164" r="32" fill="url(#cWheel)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-              <circle cx="136" cy="164" r="19" fill="rgba(0,0,0,0.4)" stroke="rgba(0,212,255,0.5)" stroke-width="1.5"/>
-              <g stroke="rgba(0,212,255,0.35)" stroke-width="1.5" transform="translate(136,164)">
-                <line x1="0" y1="-16" x2="0" y2="16"/>
-                <line x1="-16" y1="0" x2="16" y2="0"/>
-                <line x1="-11" y1="-11" x2="11" y2="11"/>
-                <line x1="11" y1="-11" x2="-11" y2="11"/>
-              </g>
-              <circle cx="136" cy="164" r="4" fill="rgba(0,212,255,0.8)"/>
-              <!-- Rear wheel -->
-              <ellipse cx="416" cy="170" rx="35" ry="8" fill="rgba(0,0,0,0.3)"/>
-              <circle cx="416" cy="164" r="32" fill="url(#cWheel)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-              <circle cx="416" cy="164" r="19" fill="rgba(0,0,0,0.4)" stroke="rgba(0,212,255,0.5)" stroke-width="1.5"/>
-              <g stroke="rgba(0,212,255,0.35)" stroke-width="1.5" transform="translate(416,164)">
-                <line x1="0" y1="-16" x2="0" y2="16"/>
-                <line x1="-16" y1="0" x2="16" y2="0"/>
-                <line x1="-11" y1="-11" x2="11" y2="11"/>
-                <line x1="11" y1="-11" x2="-11" y2="11"/>
-              </g>
-              <circle cx="416" cy="164" r="4" fill="rgba(0,212,255,0.8)"/>
-              <!-- Front headlight -->
-              <path d="M511 128 Q520 132 520 140 Q520 148 511 152" fill="none" stroke="rgba(0,212,255,0.9)" stroke-width="3" stroke-linecap="round"/>
-              <rect x="506" y="135" width="14" height="6" rx="3" fill="rgba(0,212,255,0.85)" filter="url(#headGlow)"/>
-              <!-- Rear tail light -->
-              <rect x="40" y="134" width="14" height="6" rx="3" fill="rgba(255,60,60,0.85)"/>
-              <!-- Bottom accent line -->
-              <line x1="62" y1="161" x2="498" y2="161" stroke="rgba(0,212,255,0.18)" stroke-width="1"/>
-            </svg>
-            <div class="car-mode-glow"></div>
+        <!-- Left: Car visual -->
+        <div class="driving-car-panel">
+          <div class="driving-car-card card">
+            <div class="driving-car-visual">🚗</div>
+            <div class="driving-car-label">Snoopy EV</div>
+            <div class="driving-mode-badge" id="driving-mode-active">AUTO</div>
           </div>
         </div>
-        <!-- Right panel -->
-        <div class="driving-info-panel">
-          <div>
-            <div class="driving-mode-selected"><i data-lucide="flag"></i> Driving Mode Selected</div>
-            <div class="driving-mode-name" id="driving-mode-name">AUTO</div>
+        <!-- Right: Mode selector -->
+        <div class="driving-mode-panel">
+          <div class="driving-mode-title">Select Driving Mode</div>
+          <div class="driving-mode-list">
+            <button class="mode-btn active" id="mode-btn-auto" onclick="selectMode('auto')">
+              <i data-lucide="gauge"></i>
+              <span class="mode-btn-name">AUTOMATIC</span>
+              <span class="mode-btn-sub">Balanced performance &amp; efficiency</span>
+            </button>
+            <button class="mode-btn" id="mode-btn-eco" onclick="selectMode('eco')">
+              <i data-lucide="leaf"></i>
+              <span class="mode-btn-name">ECONOMY</span>
+              <span class="mode-btn-sub">Maximum range, reduced power</span>
+            </button>
+            <button class="mode-btn" id="mode-btn-sport" onclick="selectMode('sport')">
+              <i data-lucide="zap"></i>
+              <span class="mode-btn-name">SPORT</span>
+              <span class="mode-btn-sub">Full power, performance priority</span>
+            </button>
           </div>
-          <div class="driving-mode-stats">
-            <div class="driving-stat-row"><span class="driving-stat-label">Max Power</span><span class="driving-stat-value" id="driving-stat-power">75 kW</span></div>
-            <div class="driving-stat-row"><span class="driving-stat-label">Est. Range</span><span class="driving-stat-value" id="driving-stat-range">105 KM</span></div>
-            <div class="driving-stat-row"><span class="driving-stat-label">Regen</span><span class="driving-stat-value" id="driving-stat-regen">18%</span></div>
-          </div>
-          <div class="mode-select-btns">
-            <button class="mode-btn active" id="mode-auto" onclick="selectMode('auto')">
-              AUTOMATIC <span class="mode-sub">75 kW · 105 KM</span>
-            </button>
-            <button class="mode-btn" id="mode-eco" onclick="selectMode('eco')">
-              ECONOMY <span class="mode-sub">45 kW · 130 KM</span>
-            </button>
-            <button class="mode-btn" id="mode-sport" onclick="selectMode('sport')">
-              SPORT <span class="mode-sub">150 kW · 75 KM</span>
-            </button>
+          <div class="driving-mode-stats card" id="mode-stats-display">
+            <div class="mode-stat-row"><span class="mode-stat-label">Power</span><span class="mode-stat-val" id="mode-stat-power">—</span></div>
+            <div class="mode-stat-row"><span class="mode-stat-label">Regen</span><span class="mode-stat-val" id="mode-stat-regen">—</span></div>
+            <div class="mode-stat-row"><span class="mode-stat-label">Range</span><span class="mode-stat-val" id="mode-stat-range">—</span></div>
           </div>
         </div>
       </div>
@@ -423,105 +383,141 @@
 
     <!-- 8. ENGINE STATUS -->
     <section id="screen-engine" class="screen">
-      <div class="screen-title"><i data-lucide="cpu"></i> Engine Status</div>
-      <div class="engine-stats-row">
-        <div class="card engine-stat-card"><div class="engine-stat-label">Speed</div><div class="engine-stat-value">90 km/h</div></div>
-        <div class="card engine-stat-card"><div class="engine-stat-label">Power Usage</div><div class="engine-stat-value">15 kWh</div></div>
-        <div class="card engine-stat-card"><div class="engine-stat-label">Issues Detected</div><div class="engine-stat-value good">NONE</div></div>
+      <div class="engine-header">
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Speed</div>
+          <div class="engine-stat-value" style="color:var(--cyan)">90 KM/H</div>
+        </div>
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Power Usage</div>
+          <div class="engine-stat-value" style="color:var(--cyan)">15 kWh</div>
+        </div>
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Issues Detected</div>
+          <div class="engine-stat-value" style="color:var(--good)">NONE</div>
+        </div>
       </div>
       <div class="engine-grid">
         <div class="card">
-          <div class="card-title">Key Components</div>
-          <div class="comp-row"><i data-lucide="activity"></i><div class="comp-name">Battery Health</div><div class="comp-val">95%</div></div>
-          <div class="comp-row"><i data-lucide="thermometer"></i><div class="comp-name">Motor Temperature</div><div class="comp-val">45°C <span class="good">Normal</span></div></div>
-          <div class="comp-row"><i data-lucide="cpu"></i><div class="comp-name">Inverter Temperature</div><div class="comp-val">52°C <span class="good">Normal</span></div></div>
+          <div class="card-title"><i data-lucide="cpu"></i> Key Components Status</div>
+          <div class="comp-row"><i data-lucide="battery-full"></i><div class="comp-name">Battery Health</div><div class="comp-val">95%</div></div>
+          <div class="comp-row"><i data-lucide="thermometer"></i><div class="comp-name">Motor Temperature</div><div class="comp-val">45°C <span style="color:var(--good)">Normal</span></div></div>
+          <div class="comp-row"><i data-lucide="zap"></i><div class="comp-name">Inverter Temperature</div><div class="comp-val">52°C <span style="color:var(--good)">Normal</span></div></div>
         </div>
         <div class="card">
-          <div class="card-title">Charging Status</div>
-          <div class="vehicle-row"><div class="vehicle-label">Plugged In</div><div class="vehicle-value" style="color:var(--text-dim)">NO</div></div>
-          <div class="vehicle-row"><div class="vehicle-label">Time to 100%</div><div class="vehicle-value">1h 10 min</div></div>
-          <div class="vehicle-row"><div class="vehicle-label">Charge Limit</div><div class="vehicle-value">100%</div></div>
+          <div class="card-title"><i data-lucide="plug"></i> Charging Status</div>
+          <div class="comp-row"><i data-lucide="link"></i><div class="comp-name">Connected</div><div class="comp-val" style="color:var(--muted)">NO</div></div>
+          <div class="comp-row"><i data-lucide="clock"></i><div class="comp-name">Time to 100%</div><div class="comp-val">1h 10 min</div></div>
+          <div class="comp-row"><i data-lucide="battery-charging"></i><div class="comp-name">Charge Limit</div><div class="comp-val">100%</div></div>
         </div>
       </div>
       <div class="engine-action-row">
-        <button class="engine-action-btn" onclick="navigate('screen-performance')">Performance Metrics <i data-lucide="bar-chart-2"></i></button>
-        <button class="engine-action-btn" onclick="navigate('screen-issues')">Issue Detection <i data-lucide="alert-triangle"></i></button>
+        <button class="engine-action-btn" onclick="navigate('screen-performance')"><i data-lucide="bar-chart-2"></i> Performance Metrics</button>
+        <button class="engine-action-btn" onclick="navigate('screen-issues')"><i data-lucide="alert-triangle"></i> Issue Detection</button>
       </div>
     </section>
 
     <!-- 9. PERFORMANCE -->
     <section id="screen-performance" class="screen">
-      <div class="screen-title"><i data-lucide="bar-chart-2"></i> Performance Metrics</div>
-      <div class="perf-grid">
-        <div class="card perf-chart">
-          <div class="perf-chart-title">Power Output (kW)</div>
-          <div class="bar-chart">
-            <div class="bar-row"><span class="bar-row-label">Motor</span><div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div><span class="bar-row-val">75 kW</span></div>
-            <div class="bar-row"><span class="bar-row-label">Regen</span><div class="bar-bg"><div class="bar-fill green" style="width:30%"></div></div><span class="bar-row-val">30 kW</span></div>
-            <div class="bar-row"><span class="bar-row-label">Total</span><div class="bar-bg"><div class="bar-fill" style="width:60%"></div></div><span class="bar-row-val">60 kW</span></div>
-          </div>
+      <div class="engine-header">
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Speed</div>
+          <div class="engine-stat-value" style="color:var(--cyan)">90 KM/H</div>
         </div>
-        <div class="card perf-chart">
-          <div class="perf-chart-title">Efficiency (%)</div>
-          <div class="bar-chart">
-            <div class="bar-row"><span class="bar-row-label">Drive</span><div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div><span class="bar-row-val">88%</span></div>
-            <div class="bar-row"><span class="bar-row-label">Thermal</span><div class="bar-bg"><div class="bar-fill green" style="width:92%"></div></div><span class="bar-row-val">92%</span></div>
-            <div class="bar-row"><span class="bar-row-label">Overall</span><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div><span class="bar-row-val">85%</span></div>
-          </div>
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Power Usage</div>
+          <div class="engine-stat-value" style="color:var(--cyan)">15 kWh</div>
         </div>
-        <div class="card perf-chart">
-          <div class="perf-chart-title">Speed History (km/h)</div>
-          <div class="bar-chart">
-            <div class="bar-row"><span class="bar-row-label">−5 min</span><div class="bar-bg"><div class="bar-fill" style="width:45%"></div></div><span class="bar-row-val">54</span></div>
-            <div class="bar-row"><span class="bar-row-label">−3 min</span><div class="bar-bg"><div class="bar-fill" style="width:70%"></div></div><span class="bar-row-val">84</span></div>
-            <div class="bar-row"><span class="bar-row-label">Now</span><div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div><span class="bar-row-val">90</span></div>
-          </div>
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Issues Detected</div>
+          <div class="engine-stat-value" style="color:var(--good)">NONE</div>
         </div>
-        <div class="card perf-chart">
-          <div class="perf-chart-title">Consumption (kWh/100km)</div>
-          <div class="bar-chart">
-            <div class="bar-row"><span class="bar-row-label">City</span><div class="bar-bg"><div class="bar-fill" style="width:60%"></div></div><span class="bar-row-val">15.0</span></div>
-            <div class="bar-row"><span class="bar-row-label">Highway</span><div class="bar-bg"><div class="bar-fill" style="width:50%"></div></div><span class="bar-row-val">18.5</span></div>
-            <div class="bar-row"><span class="bar-row-label">Avg</span><div class="bar-bg"><div class="bar-fill green" style="width:55%"></div></div><span class="bar-row-val">16.3</span></div>
+      </div>
+      <div class="perf-section-title"><i data-lucide="activity"></i> Performance Metric</div>
+      <div class="perf-metric-grid">
+        <div class="card perf-metric-card">
+          <div class="perf-metric-icon"><i data-lucide="gauge"></i></div>
+          <div class="perf-metric-label">Tire Pressure</div>
+          <div class="perf-tire-grid">
+            <span class="perf-tire-val">39</span><span class="perf-tire-val">40</span>
+            <span class="perf-tire-val">39</span><span class="perf-tire-val">41</span>
           </div>
+          <div class="perf-metric-unit">PSI</div>
+        </div>
+        <div class="card perf-metric-card">
+          <div class="perf-metric-icon"><i data-lucide="droplets"></i></div>
+          <div class="perf-metric-label">Coolant Flow</div>
+          <div class="perf-metric-value">9 <span class="perf-metric-unit">L/min</span></div>
+        </div>
+        <div class="card perf-metric-card">
+          <div class="perf-metric-icon"><i data-lucide="settings-2"></i></div>
+          <div class="perf-metric-label">Motor Torque</div>
+          <div class="perf-metric-value">420 <span class="perf-metric-unit">Nm</span></div>
+        </div>
+        <div class="card perf-metric-card">
+          <div class="perf-metric-icon"><i data-lucide="activity"></i></div>
+          <div class="perf-metric-label">Motor RPM</div>
+          <div class="perf-metric-value">8500 <span class="perf-metric-unit">RPM</span></div>
         </div>
       </div>
     </section>
 
     <!-- 10. ISSUES -->
     <section id="screen-issues" class="screen">
-      <div class="screen-title"><i data-lucide="shield-check"></i> Issue Detection</div>
-      <div class="issues-list">
-        <div class="issue-item"><div class="issue-dot none"></div><div class="issue-name">Battery System</div><div class="issue-status good">No Issues</div></div>
-        <div class="issue-item"><div class="issue-dot none"></div><div class="issue-name">Motor Drive Unit</div><div class="issue-status good">No Issues</div></div>
-        <div class="issue-item"><div class="issue-dot none"></div><div class="issue-name">Thermal Management</div><div class="issue-status good">Normal</div></div>
-        <div class="issue-item"><div class="issue-dot warn"></div><div class="issue-name">Tire Pressure (Front Left)</div><div class="issue-status warn">Low — 28 PSI</div></div>
-        <div class="issue-item"><div class="issue-dot none"></div><div class="issue-name">Brake System</div><div class="issue-status good">No Issues</div></div>
-        <div class="issue-item"><div class="issue-dot none"></div><div class="issue-name">Charging System</div><div class="issue-status good">No Issues</div></div>
-        <button class="engine-action-btn" style="margin-top:10px;justify-content:center" onclick="navigate('screen-fault')">View Fault Analysis <i data-lucide="file-search-2"></i></button>
+      <div class="engine-header">
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Speed</div>
+          <div class="engine-stat-value" style="color:var(--cyan)">90 KM/H</div>
+        </div>
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Power Usage</div>
+          <div class="engine-stat-value" style="color:var(--cyan)">15 kWh</div>
+        </div>
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Issues Detected</div>
+          <div class="engine-stat-value" style="color:var(--danger)">1</div>
+        </div>
+      </div>
+      <div class="issues-alert-card card">
+        <div class="issues-alert-header">
+          <i data-lucide="alert-octagon"></i>
+          CRITICAL SYSTEM FAULT DETECTED
+        </div>
+        <div class="issues-alert-body">
+          <div class="issues-alert-sub">URGENT ISSUE DETECTED. DO NOT PROCEED.</div>
+          <div class="issues-list-compact">
+            <div class="issue-item-compact"><div class="issue-dot warn"></div><span>Tire Pressure (Front Left) — Low: 28 PSI</span></div>
+            <div class="issue-item-compact"><div class="issue-dot none"></div><span>Battery System — No Issues</span></div>
+            <div class="issue-item-compact"><div class="issue-dot none"></div><span>Motor Drive Unit — No Issues</span></div>
+            <div class="issue-item-compact"><div class="issue-dot none"></div><span>Thermal Management — Normal</span></div>
+          </div>
+          <button class="issues-cta-btn" onclick="navigate('screen-fault')"><i data-lucide="file-search-2"></i> Tap to begin fault analysis</button>
+        </div>
       </div>
     </section>
 
     <!-- 11. FAULT ANALYSIS -->
     <section id="screen-fault" class="screen">
-      <div class="screen-title"><i data-lucide="alert-octagon"></i> Fault Analysis</div>
-      <div class="fault-grid">
-        <div class="fault-code-list">
-          <div class="fault-code-item"><div class="fault-code">TPMS-001</div><div class="fault-desc">Front Left Tire Pressure Below Threshold</div></div>
-          <div class="card" style="padding:14px;margin-top:8px">
-            <div style="font-size:14px;color:var(--text-dim);margin-bottom:8px">Other systems</div>
-            <div class="good" style="font-size:17px;display:flex;align-items:center;gap:6px"><i data-lucide="check-circle-2" style="width:18px;height:18px"></i>No fault codes</div>
-          </div>
+      <div class="fault-critical-card">
+        <div class="fault-critical-header">
+          <i data-lucide="alert-octagon"></i>
+          Fault Analysis Complete — Critical
         </div>
-        <div class="fault-detail card">
-          <div class="settings-section-title">TPMS-001 Details</div>
-          <div class="fault-detail-row"><span class="fault-detail-label">Fault Code</span><span class="fault-detail-value">TPMS-001</span></div>
-          <div class="fault-detail-row"><span class="fault-detail-label">System</span><span class="fault-detail-value">Tire Pressure</span></div>
-          <div class="fault-detail-row"><span class="fault-detail-label">Severity</span><span class="fault-detail-value warn">Warning</span></div>
-          <div class="fault-detail-row"><span class="fault-detail-label">Location</span><span class="fault-detail-value">Front Left</span></div>
-          <div class="fault-detail-row"><span class="fault-detail-label">Current</span><span class="fault-detail-value">28 PSI</span></div>
-          <div class="fault-detail-row"><span class="fault-detail-label">Recommended</span><span class="fault-detail-value">35 PSI</span></div>
-          <div class="fault-detail-row"><span class="fault-detail-label">Action</span><span class="fault-detail-value">Inflate at next stop</span></div>
+        <div class="fault-critical-body">
+          <div class="card fault-components-panel">
+            <div class="card-title"><i data-lucide="cpu"></i> Key Components Status</div>
+            <div class="comp-row"><i data-lucide="battery-full"></i><div class="comp-name">Battery Health</div><div class="comp-val">95%</div></div>
+            <div class="comp-row"><i data-lucide="thermometer"></i><div class="comp-name">Motor Temperature</div><div class="comp-val" style="color:var(--danger)">110°C <span style="color:var(--danger)">Critical</span></div></div>
+            <div class="comp-row"><i data-lucide="zap"></i><div class="comp-name">Inverter Temperature</div><div class="comp-val">45°C <span style="color:var(--good)">Normal</span></div></div>
+          </div>
+          <div class="card fault-details-panel">
+            <div class="card-title"><i data-lucide="file-text"></i> Details</div>
+            <div class="fault-detail-row"><span class="fault-detail-label">Fault</span><span class="fault-detail-value" style="color:var(--danger)">Motor Overheat</span></div>
+            <div class="fault-detail-row"><span class="fault-detail-label">Reading</span><span class="fault-detail-value" style="color:var(--danger)">110°C (Critical)</span></div>
+            <div class="fault-detail-row"><span class="fault-detail-label">Severity</span><span class="fault-detail-value" style="color:var(--danger)">CRITICAL</span></div>
+            <div class="fault-detail-row"><span class="fault-detail-label">Action</span><span class="fault-detail-value">Pull over safely immediately</span></div>
+            <p class="fault-detail-desc">Motor overheat. Shutdown imminent. Pull over safely and allow the motor to cool before proceeding.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -534,13 +530,10 @@
         <div class="card ent-tile" onclick="navigate('screen-youtube')"><i data-lucide="youtube"></i><div class="ent-tile-label">YouTube</div></div>
         <div class="card ent-tile" onclick="navigate('screen-music')"><i data-lucide="radio"></i><div class="ent-tile-label">Radio</div></div>
         <div class="card ent-tile" onclick="navigate('screen-music')"><i data-lucide="mic-2"></i><div class="ent-tile-label">Podcast</div></div>
-        <div class="card ent-tile" onclick="navigate('screen-youtube')"><i data-lucide="globe"></i><div class="ent-tile-label">Browser</div></div>
-        <div class="card ent-tile" style="background:linear-gradient(135deg,rgba(0,212,255,0.1),rgba(61,111,255,0.1));border-color:rgba(0,212,255,0.2)" onclick="navigate('screen-music')">
-          <i data-lucide="volume-2" style="color:var(--cyan)"></i>
-          <div class="ent-tile-label">Now Playing</div>
-          <div id="now-playing-text" style="font-size:12px;color:var(--text-dim);text-align:center">Starboy — The Weeknd</div>
-        </div>
+        <div class="card ent-tile" onclick="navigate('screen-settings-bluetooth')"><i data-lucide="bluetooth"></i><div class="ent-tile-label">Bluetooth Audio</div></div>
+        <div class="card ent-tile" onclick="navigate('screen-music')"><i data-lucide="sliders"></i><div class="ent-tile-label">Equalizer</div></div>
       </div>
+      <div id="now-playing-text" class="ent-now-playing">🎵 Blinding Lights – The Weeknd</div>
     </section>
 
     <!-- 13. MUSIC -->
@@ -557,9 +550,9 @@
           </div>
           <div class="music-controls">
             <button class="music-ctrl-btn" onclick="prevTrack()"><i data-lucide="skip-back"></i></button>
-            <button class="music-ctrl-btn" onclick="prevTrack()"><i data-lucide="rewind"></i></button>
+            <button class="music-ctrl-btn" id="shuffle-btn" onclick="toggleShuffle()"><i data-lucide="shuffle"></i></button>
             <button class="music-ctrl-btn play" id="play-btn" onclick="togglePlay()"><i data-lucide="play"></i></button>
-            <button class="music-ctrl-btn" onclick="nextTrack()"><i data-lucide="fast-forward"></i></button>
+            <button class="music-ctrl-btn" id="repeat-btn" onclick="toggleRepeat()"><i data-lucide="repeat"></i></button>
             <button class="music-ctrl-btn" onclick="nextTrack()"><i data-lucide="skip-forward"></i></button>
           </div>
         </div>
@@ -593,124 +586,200 @@
 
     <!-- 15–19. SETTINGS (Display / Bluetooth / Network / Time / System) -->
     <section id="screen-settings-display" class="screen">
-      <div class="screen-title"><i data-lucide="settings"></i> Settings &amp; Preferences</div>
       <div class="settings-layout">
-        <div class="settings-sidebar">
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-system')">System</button>
-          <button class="settings-nav-btn active">Display</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-bluetooth')">Bluetooth &amp; Devices</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-network')">Network &amp; Internet</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-time')">Time &amp; Language</button>
+        <aside class="settings-sidebar">
+          <div class="settings-sidebar-title">Settings<br>and Preferences</div>
+          <nav class="settings-sidebar-nav">
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-system')"><i data-lucide="settings-2"></i> System</button>
+            <button class="settings-nav-btn active"><i data-lucide="monitor"></i> Display</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-bluetooth')"><i data-lucide="bluetooth"></i> Bluetooth &amp; Devices</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-network')"><i data-lucide="wifi"></i> Network &amp; Internet</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-time')"><i data-lucide="clock"></i> Time &amp; Language</button>
+          </nav>
+        </aside>
+        <div class="settings-pane">
+          <div class="settings-pane-title">Display</div>
+          <div class="settings-section">
+            <div class="settings-section-label">Energy Display</div>
+            <div class="seg-pill">
+              <button class="seg-pill-btn active" onclick="switchToggle(this)">Battery</button>
+              <button class="seg-pill-btn" onclick="switchToggle(this)">Distance</button>
+            </div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-section-label">Distance</div>
+            <div class="seg-pill">
+              <button class="seg-pill-btn active" onclick="switchToggle(this)">Kilometer</button>
+              <button class="seg-pill-btn" onclick="switchToggle(this)">Miles</button>
+            </div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-section-label">Tire Pressure</div>
+            <div class="seg-pill">
+              <button class="seg-pill-btn active" onclick="switchToggle(this)">Bar</button>
+              <button class="seg-pill-btn" onclick="switchToggle(this)">Psi</button>
+            </div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-section-label">Brightness</div>
+            <input type="range" class="settings-slider" id="brightness-slider" min="10" max="100" value="80">
+          </div>
         </div>
-        <div class="settings-panel card">
-          <div class="settings-section-title">Display</div>
-          <div class="settings-group">
-            <div class="settings-group-title">Energy Display</div>
-            <div class="toggle-row"><button class="toggle-btn active" onclick="switchToggle(this)">Battery</button><button class="toggle-btn" onclick="switchToggle(this)">Distance</button></div>
+      </div>
+    </section>
+
+    <section id="screen-settings-system" class="screen">
+      <div class="settings-layout">
+        <aside class="settings-sidebar">
+          <div class="settings-sidebar-title">Settings<br>and Preferences</div>
+          <nav class="settings-sidebar-nav">
+            <button class="settings-nav-btn active"><i data-lucide="settings-2"></i> System</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-display')"><i data-lucide="monitor"></i> Display</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-bluetooth')"><i data-lucide="bluetooth"></i> Bluetooth &amp; Devices</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-network')"><i data-lucide="wifi"></i> Network &amp; Internet</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-time')"><i data-lucide="clock"></i> Time &amp; Language</button>
+          </nav>
+        </aside>
+        <div class="settings-pane">
+          <div class="settings-pane-title">System</div>
+          <div class="settings-section">
+            <div class="settings-section-label">Vehicle</div>
+            <div class="settings-item-row"><span class="settings-item-label">Vehicle Name</span><span class="settings-item-value">Snoopy EV</span></div>
+            <div class="settings-item-row"><span class="settings-item-label">VIN</span><span class="settings-item-value">SN2026EVHCI001</span></div>
+            <div class="settings-item-row"><span class="settings-item-label">Firmware Version</span><span class="settings-item-value accent">v3.1.0</span></div>
+            <div class="settings-item-row"><span class="settings-item-label">App Version</span><span class="settings-item-value">v2.4.1</span></div>
+            <div class="settings-item-row"><span class="settings-item-label">Storage</span><span class="settings-item-value">14.2 GB / 32 GB</span></div>
+            <div class="settings-item-row"><span class="settings-item-label">Last Updated</span><span class="settings-item-value">2026-05-01</span></div>
           </div>
-          <div class="settings-group">
-            <div class="settings-group-title">Distance Unit</div>
-            <div class="toggle-row"><button class="toggle-btn" onclick="switchToggle(this)">Miles</button><button class="toggle-btn active" onclick="switchToggle(this)">Kilometer</button></div>
-          </div>
-          <div class="settings-group">
-            <div class="settings-group-title">Tire Pressure</div>
-            <div class="toggle-row"><button class="toggle-btn active" onclick="switchToggle(this)">Bar</button><button class="toggle-btn" onclick="switchToggle(this)">PSI</button></div>
-          </div>
-          <div class="settings-group">
-            <div class="settings-group-title">Brightness</div>
-            <input type="range" min="0" max="100" value="80" id="brightness-slider" style="margin-top:8px">
+          <div class="settings-section">
+            <div class="settings-section-label">Preferences</div>
+            <div class="settings-item-row"><span class="settings-item-label">Reset to Default</span><button class="settings-danger-btn">Reset</button></div>
           </div>
         </div>
       </div>
     </section>
 
     <section id="screen-settings-bluetooth" class="screen">
-      <div class="screen-title"><i data-lucide="settings"></i> Settings &amp; Preferences</div>
       <div class="settings-layout">
-        <div class="settings-sidebar">
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-system')">System</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-display')">Display</button>
-          <button class="settings-nav-btn active">Bluetooth &amp; Devices</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-network')">Network &amp; Internet</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-time')">Time &amp; Language</button>
-        </div>
-        <div class="settings-panel card">
-          <div class="settings-section-title">Bluetooth &amp; Devices</div>
-          <div class="settings-item-row"><span class="settings-item-label">Bluetooth</span><div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="settings-item-row"><span class="settings-item-label">📱 Justin's iPhone</span><span class="settings-item-value good">Connected</span></div>
-          <div class="settings-item-row"><span class="settings-item-label">🎧 AirPods Pro</span><span class="settings-item-value">Paired</span></div>
-          <div class="settings-item-row"><span class="settings-item-label">🔊 Car Speakers</span><span class="settings-item-value good">Active</span></div>
-          <div class="settings-group" style="margin-top:16px">
-            <div class="settings-group-title">Discoverable</div>
-            <div class="toggle-row"><button class="toggle-btn active" onclick="switchToggle(this)">On</button><button class="toggle-btn" onclick="switchToggle(this)">Off</button></div>
+        <aside class="settings-sidebar">
+          <div class="settings-sidebar-title">Settings<br>and Preferences</div>
+          <nav class="settings-sidebar-nav">
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-system')"><i data-lucide="settings-2"></i> System</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-display')"><i data-lucide="monitor"></i> Display</button>
+            <button class="settings-nav-btn active"><i data-lucide="bluetooth"></i> Bluetooth &amp; Devices</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-network')"><i data-lucide="wifi"></i> Network &amp; Internet</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-time')"><i data-lucide="clock"></i> Time &amp; Language</button>
+          </nav>
+        </aside>
+        <div class="settings-pane">
+          <div class="settings-pane-title">Bluetooth &amp; Devices</div>
+          <div class="settings-section">
+            <div class="settings-section-label">Bluetooth</div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Bluetooth</span>
+              <div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div>
+            </div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-section-label">Paired Devices</div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Justin's iPhone</span>
+              <div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div>
+            </div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">AirPods Pro</span>
+              <div class="settings-toggle-switch" onclick="this.classList.toggle('on')"></div>
+            </div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">BMW Audio</span>
+              <div class="settings-toggle-switch" onclick="this.classList.toggle('on')"></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <section id="screen-settings-network" class="screen">
-      <div class="screen-title"><i data-lucide="settings"></i> Settings &amp; Preferences</div>
       <div class="settings-layout">
-        <div class="settings-sidebar">
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-system')">System</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-display')">Display</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-bluetooth')">Bluetooth &amp; Devices</button>
-          <button class="settings-nav-btn active">Network &amp; Internet</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-time')">Time &amp; Language</button>
-        </div>
-        <div class="settings-panel card">
-          <div class="settings-section-title">Network &amp; Internet</div>
-          <div class="settings-item-row"><span class="settings-item-label">Wi-Fi</span><div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="settings-item-row"><span class="settings-item-label">📶 Unimas_WiFi</span><span class="settings-item-value good">Connected</span></div>
-          <div class="settings-item-row"><span class="settings-item-label">📶 HOME_5G</span><span class="settings-item-value">Saved</span></div>
-          <div class="settings-item-row"><span class="settings-item-label">Mobile Hotspot</span><div class="settings-toggle-switch" onclick="this.classList.toggle('on')"></div></div>
-          <div class="settings-item-row"><span class="settings-item-label">Data Saver</span><div class="settings-toggle-switch" onclick="this.classList.toggle('on')"></div></div>
+        <aside class="settings-sidebar">
+          <div class="settings-sidebar-title">Settings<br>and Preferences</div>
+          <nav class="settings-sidebar-nav">
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-system')"><i data-lucide="settings-2"></i> System</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-display')"><i data-lucide="monitor"></i> Display</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-bluetooth')"><i data-lucide="bluetooth"></i> Bluetooth &amp; Devices</button>
+            <button class="settings-nav-btn active"><i data-lucide="wifi"></i> Network &amp; Internet</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-time')"><i data-lucide="clock"></i> Time &amp; Language</button>
+          </nav>
+        </aside>
+        <div class="settings-pane">
+          <div class="settings-pane-title">Network &amp; Internet</div>
+          <div class="settings-section">
+            <div class="settings-section-label">Wi-Fi</div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Wi-Fi</span>
+              <div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div>
+            </div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">UNIMAS_WIFI</span>
+              <div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div>
+            </div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Campus_5G</span>
+              <div class="settings-toggle-switch" onclick="this.classList.toggle('on')"></div>
+            </div>
+          </div>
+          <div class="settings-section">
+            <div class="settings-section-label">Mobile Data</div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Mobile Data</span>
+              <div class="settings-toggle-switch" onclick="this.classList.toggle('on')"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="screen-settings-time" class="screen">
-      <div class="screen-title"><i data-lucide="settings"></i> Settings &amp; Preferences</div>
       <div class="settings-layout">
-        <div class="settings-sidebar">
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-system')">System</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-display')">Display</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-bluetooth')">Bluetooth &amp; Devices</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-network')">Network &amp; Internet</button>
-          <button class="settings-nav-btn active">Time &amp; Language</button>
-        </div>
-        <div class="settings-panel card">
-          <div class="settings-section-title">Time &amp; Language</div>
-          <div class="settings-item-row"><span class="settings-item-label">Time Zone</span><span class="settings-item-value">GMT+8 Kuching</span></div>
-          <div class="settings-item-row"><span class="settings-item-label">24-Hour Format</span><div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="settings-item-row"><span class="settings-item-label">Auto Set Time</span><div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="settings-group" style="margin-top:16px">
-            <div class="settings-group-title">Language</div>
-            <div class="toggle-row"><button class="toggle-btn active" onclick="switchToggle(this)">English</button><button class="toggle-btn" onclick="switchToggle(this)">Bahasa</button><button class="toggle-btn" onclick="switchToggle(this)">中文</button></div>
+        <aside class="settings-sidebar">
+          <div class="settings-sidebar-title">Settings<br>and Preferences</div>
+          <nav class="settings-sidebar-nav">
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-system')"><i data-lucide="settings-2"></i> System</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-display')"><i data-lucide="monitor"></i> Display</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-bluetooth')"><i data-lucide="bluetooth"></i> Bluetooth &amp; Devices</button>
+            <button class="settings-nav-btn" onclick="navigate('screen-settings-network')"><i data-lucide="wifi"></i> Network &amp; Internet</button>
+            <button class="settings-nav-btn active"><i data-lucide="clock"></i> Time &amp; Language</button>
+          </nav>
+        </aside>
+        <div class="settings-pane">
+          <div class="settings-pane-title">Time &amp; Language</div>
+          <div class="settings-section">
+            <div class="settings-section-label">Time</div>
+            <div class="settings-item-row"><span class="settings-item-label">Current Date</span><span id="settings-date-display" style="color:var(--muted);font-size:14px">Wednesday, 27 May 2026</span></div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Time Format</span>
+              <div class="seg-pill">
+                <button class="seg-pill-btn active" onclick="switchToggle(this)">24h</button>
+                <button class="seg-pill-btn" onclick="switchToggle(this)">12h</button>
+              </div>
+            </div>
+            <div class="settings-item-row"><span class="settings-item-label">Time Zone</span><span class="settings-item-value">Asia/Kuching (UTC+8)</span></div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Auto-Sync Time</span>
+              <div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div>
+            </div>
           </div>
-          <div class="settings-item-row"><span class="settings-item-label">Date Format</span><span class="settings-item-value">DD/MM/YYYY</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="screen-settings-system" class="screen">
-      <div class="screen-title"><i data-lucide="settings"></i> Settings &amp; Preferences</div>
-      <div class="settings-layout">
-        <div class="settings-sidebar">
-          <button class="settings-nav-btn active">System</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-display')">Display</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-bluetooth')">Bluetooth &amp; Devices</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-network')">Network &amp; Internet</button>
-          <button class="settings-nav-btn" onclick="navigate('screen-settings-time')">Time &amp; Language</button>
-        </div>
-        <div class="settings-panel card">
-          <div class="settings-section-title">System</div>
-          <div class="settings-item-row"><span class="settings-item-label">Software Version</span><span class="settings-item-value">v3.12.4</span></div>
-          <div class="settings-item-row"><span class="settings-item-label">Hardware Version</span><span class="settings-item-value">HW 3.0</span></div>
-          <div class="settings-item-row"><span class="settings-item-label">Vehicle ID</span><span class="settings-item-value">SC·M3·397FF</span></div>
-          <div class="settings-item-row"><span class="settings-item-label">Auto Update</span><div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="settings-item-row"><span class="settings-item-label">Diagnostics Sharing</span><div class="settings-toggle-switch on" onclick="this.classList.toggle('on')"></div></div>
-          <div class="settings-item-row"><span class="settings-item-label">Factory Reset</span><span class="settings-item-value err" style="cursor:pointer">Reset</span></div>
+          <div class="settings-section">
+            <div class="settings-section-label">Language</div>
+            <div class="settings-item-row"><span class="settings-item-label">Display Language</span><span class="settings-item-value">English (US)</span></div>
+            <div class="settings-item-row">
+              <span class="settings-item-label">Date Format</span>
+              <div class="seg-pill">
+                <button class="seg-pill-btn active" onclick="switchToggle(this)">DD/MM</button>
+                <button class="seg-pill-btn" onclick="switchToggle(this)">MM/DD</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -768,46 +837,56 @@
     <div class="vol-bar-bg"><div class="vol-bar-fill" style="width:80%"></div></div>
   </div>
 
-  <!-- ── BOTTOM NAV ── 8 buttons matching Figma layout ── -->
+  <!-- ── BOTTOM DOCK ── -->
   <nav id="bottom-nav">
-    <!-- Left: audio controls -->
-    <div class="nav-group">
-      <button class="nav-btn" id="btn-mute" onclick="toggleMute()" title="Mute">
-        <i data-lucide="volume-x"></i>
-      </button>
-      <button class="nav-btn" onclick="adjustVolume(-10)" title="Volume Down">
-        <i data-lucide="volume-1"></i>
-      </button>
-      <button class="nav-btn" onclick="adjustVolume(10)" title="Volume Up">
-        <i data-lucide="volume-2"></i>
-      </button>
-    </div>
-    <!-- Centre: system navigation -->
-    <div class="nav-group">
-      <button class="nav-btn" onclick="openRecentApps()" title="Recent Apps">
-        <i data-lucide="layout-grid"></i>
-      </button>
-      <button class="nav-btn large" onclick="navigate('screen-home')" title="Home">
-        <i data-lucide="home"></i>
-      </button>
-      <button class="nav-btn large" onclick="goBack()" title="Back">
-        <i data-lucide="undo-2"></i>
-      </button>
-    </div>
-    <!-- Right: climate + settings -->
-    <div class="nav-group">
-      <button class="nav-btn" onclick="navigate('screen-climate-cabin')" title="Climate Control">
-        <i data-lucide="wind"></i>
-      </button>
-      <button class="nav-btn" onclick="navigate('screen-settings-display')" title="Settings">
-        <i data-lucide="settings"></i>
-      </button>
+    <div class="nav-dock">
+      <!-- Left: Volume controls -->
+      <div class="dock-group">
+        <button class="nav-btn" id="btn-mute" onclick="toggleMute()" title="Mute">
+          <i data-lucide="volume-x"></i>
+        </button>
+        <button class="nav-btn" onclick="adjustVolume(-10)" title="Volume Down">
+          <i data-lucide="volume-1"></i>
+        </button>
+        <button class="nav-btn" onclick="adjustVolume(10)" title="Volume Up">
+          <i data-lucide="volume-2"></i>
+        </button>
+      </div>
+      <!-- Center: System navigation -->
+      <div class="dock-group">
+        <button class="nav-btn" onclick="openRecentApps()" title="Recent Apps">
+          <i data-lucide="layout-grid"></i>
+        </button>
+        <button class="nav-btn large" onclick="navigate('screen-home')" title="Home">
+          <i data-lucide="home"></i>
+        </button>
+        <button class="nav-btn large" onclick="goBack()" title="Back">
+          <i data-lucide="undo-2"></i>
+        </button>
+      </div>
+      <!-- Right: Quick access -->
+      <div class="dock-group">
+        <button class="nav-btn" onclick="navigate('screen-climate-cabin')" title="Climate Control">
+          <i data-lucide="wind"></i>
+        </button>
+        <button class="nav-btn" onclick="navigate('screen-settings-display')" title="Settings">
+          <i data-lucide="settings"></i>
+        </button>
+      </div>
     </div>
   </nav>
 
 </div><!-- /dashboard -->
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="js/app.js"></script>
+<script src="js/state.js"></script>
+<script src="js/screens/charging.js"></script>
+<script src="js/screens/navigation-map.js"></script>
+<script src="js/screens/music.js"></script>
+<script src="js/screens/battery.js"></script>
+<script src="js/screens/settings.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/init.js"></script>
 </body>
 </html>

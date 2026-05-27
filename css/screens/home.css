@@ -1,0 +1,231 @@
+/* ── Home Screen ── */
+#screen-home {
+  padding: var(--gap);
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "weather weather weather clock   clock   clock   status  status  status"
+    "weather weather weather drive   drive   ent     ent     energy  energy"
+    ".       .       .       engine  engine  engine  nav     nav     nav   ";
+  gap: var(--gap);
+  height: 100%;
+}
+
+/* Weather — col 1, rows 1-2 */
+.home-weather {
+  grid-area: weather;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(0,100,180,0.35) 0%, var(--panel) 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--card-pad);
+}
+
+.weather-icon-bg {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 80px;
+  opacity: 0.35;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.weather-city {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-sm);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.weather-city svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+.weather-temp {
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+  font-family: var(--font-data);
+}
+
+.weather-cond {
+  font-size: var(--text-md);
+  color: var(--text);
+}
+
+.weather-humidity {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.weather-humidity svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  color: var(--cyan);
+}
+
+/* Clock — col 2, row 1 */
+.home-clock {
+  grid-area: clock;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.clock-day {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.clock-time {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--cyan);
+  font-family: var(--font-data);
+  line-height: 1;
+}
+
+.clock-date {
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+
+/* Status — cols 3-4, row 1 (wider, spans 2) */
+.home-status {
+  grid-area: status;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.home-status svg {
+  width: 32px;
+  height: 32px;
+  color: var(--good);
+}
+
+.status-main {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.status-sub {
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+
+/* Quick-access tiles — cols 2-3 rows 2-3, col 1 row 3 used by weather */
+.home-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 10px;
+  min-height: 0;
+}
+
+.home-tile svg {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.home-tile span {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.home-tile:hover {
+  box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.25);
+}
+
+/* Tile accent colors and grid positions */
+
+/* Row 2: Driving Mode, Entertainment, Energy */
+.home-tile-driving {
+  grid-area: drive;
+  background: linear-gradient(135deg, rgba(61,111,255,0.18) 0%, var(--panel) 100%);
+}
+.home-tile-driving svg { color: var(--blue); }
+
+.home-tile-ent {
+  grid-area: ent;
+  background: linear-gradient(135deg, rgba(0,212,255,0.15) 0%, var(--panel) 100%);
+}
+.home-tile-ent svg { color: var(--cyan); }
+
+.home-tile-energy {
+  grid-area: energy;
+  background: linear-gradient(135deg, rgba(76,175,80,0.15) 0%, var(--panel) 100%);
+}
+.home-tile-energy svg { color: var(--good); }
+
+/* Row 3: Engine Status (col 2), Navigation (col 3) — centered, col 1 & 4 empty */
+.home-tile-engine {
+  grid-area: engine;
+  background: linear-gradient(135deg, rgba(255,152,0,0.15) 0%, var(--panel) 100%);
+}
+.home-tile-engine svg { color: var(--warn); }
+
+.home-tile-nav {
+  grid-area: nav;
+  background: linear-gradient(135deg, rgba(0,212,255,0.12) 0%, var(--panel) 100%);
+}
+.home-tile-nav svg { color: var(--cyan); }
+
+/* ── RECENT APPS GRID (on home screen) ── */
+.recent-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  height: calc(100% - 70px);
+}
+
+.recent-app-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all var(--trans);
+}
+
+.recent-app-card:hover { border-color: var(--border-hi); transform: translateY(-3px); }
+.recent-app-icon { font-size: 40px; }
+.recent-app-icon svg { width: 40px; height: 40px; color: var(--cyan); }
+.recent-app-name { font-size: 16px; font-weight: 600; }

@@ -1,0 +1,107 @@
+/* ── Engine Status ── */
+#screen-engine,
+#screen-performance,
+#screen-issues,
+#screen-fault {
+  padding: var(--gap);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+/* Shared header stats row */
+.engine-header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+  flex-shrink: 0;
+}
+
+.engine-stat-card {
+  text-align: center;
+  padding: 14px var(--gap);
+}
+
+.engine-stat-label {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 6px;
+}
+
+.engine-stat-value {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  font-family: var(--font-data);
+  line-height: 1;
+}
+
+/* Engine grid — 2 cards side by side */
+.engine-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  flex: 1;
+  min-height: 0;
+}
+
+#screen-engine .card-title,
+#screen-performance .card-title,
+#screen-issues .card-title,
+#screen-fault .card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 16px;
+  text-transform: none;
+}
+
+#screen-engine .card-title svg,
+#screen-performance .card-title svg,
+#screen-issues .card-title svg,
+#screen-fault .card-title svg {
+  width: 18px;
+  height: 18px;
+  color: var(--cyan);
+  flex-shrink: 0;
+}
+
+/* Action row */
+.engine-action-row {
+  display: flex;
+  gap: var(--gap);
+  flex-shrink: 0;
+}
+
+.engine-action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.engine-action-btn:hover {
+  background: rgba(22,46,90,1);
+  border-color: rgba(0,212,255,0.3);
+}
+
+.engine-action-btn svg {
+  width: 18px;
+  height: 18px;
+  color: var(--cyan);
+}

@@ -1,0 +1,79 @@
+/* ── Performance Metric ── */
+.perf-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text);
+  flex-shrink: 0;
+}
+
+.perf-section-title svg {
+  width: 20px;
+  height: 20px;
+  color: var(--cyan);
+}
+
+.perf-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+  flex: 1;
+  min-height: 0;
+}
+
+.perf-metric-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.perf-metric-icon svg {
+  width: 36px;
+  height: 36px;
+  color: var(--cyan);
+}
+
+.perf-metric-label {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.perf-metric-value {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  font-family: var(--font-data);
+  color: var(--text);
+  line-height: 1;
+}
+
+.perf-metric-unit {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.perf-tire-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  width: 100%;
+}
+
+.perf-tire-val {
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: var(--r-sm);
+  padding: 6px 4px;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  font-family: var(--font-data);
+  color: var(--cyan);
+  text-align: center;
+}

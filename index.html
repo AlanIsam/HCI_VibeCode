@@ -434,105 +434,141 @@
 
     <!-- 8. ENGINE STATUS -->
     <section id="screen-engine" class="screen">
-      <div class="screen-title"><i data-lucide="cpu"></i> Engine Status</div>
-      <div class="engine-stats-row">
-        <div class="card engine-stat-card"><div class="engine-stat-label">Speed</div><div class="engine-stat-value">90 km/h</div></div>
-        <div class="card engine-stat-card"><div class="engine-stat-label">Power Usage</div><div class="engine-stat-value">15 kWh</div></div>
-        <div class="card engine-stat-card"><div class="engine-stat-label">Issues Detected</div><div class="engine-stat-value good">NONE</div></div>
+      <div class="engine-header">
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Speed</div>
+          <div class="engine-stat-value" style="color:var(--cyan)">90 KM/H</div>
+        </div>
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Power Usage</div>
+          <div class="engine-stat-value" style="color:var(--cyan)">15 kWh</div>
+        </div>
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Issues Detected</div>
+          <div class="engine-stat-value" style="color:var(--good)">NONE</div>
+        </div>
       </div>
       <div class="engine-grid">
         <div class="card">
-          <div class="card-title">Key Components</div>
-          <div class="comp-row"><i data-lucide="activity"></i><div class="comp-name">Battery Health</div><div class="comp-val">95%</div></div>
-          <div class="comp-row"><i data-lucide="thermometer"></i><div class="comp-name">Motor Temperature</div><div class="comp-val">45°C <span class="good">Normal</span></div></div>
-          <div class="comp-row"><i data-lucide="cpu"></i><div class="comp-name">Inverter Temperature</div><div class="comp-val">52°C <span class="good">Normal</span></div></div>
+          <div class="card-title"><i data-lucide="cpu"></i> Key Components Status</div>
+          <div class="comp-row"><i data-lucide="battery-full"></i><div class="comp-name">Battery Health</div><div class="comp-val">95%</div></div>
+          <div class="comp-row"><i data-lucide="thermometer"></i><div class="comp-name">Motor Temperature</div><div class="comp-val">45°C <span style="color:var(--good)">Normal</span></div></div>
+          <div class="comp-row"><i data-lucide="zap"></i><div class="comp-name">Inverter Temperature</div><div class="comp-val">52°C <span style="color:var(--good)">Normal</span></div></div>
         </div>
         <div class="card">
-          <div class="card-title">Charging Status</div>
-          <div class="vehicle-row"><div class="vehicle-label">Plugged In</div><div class="vehicle-value" style="color:var(--text-dim)">NO</div></div>
-          <div class="vehicle-row"><div class="vehicle-label">Time to 100%</div><div class="vehicle-value">1h 10 min</div></div>
-          <div class="vehicle-row"><div class="vehicle-label">Charge Limit</div><div class="vehicle-value">100%</div></div>
+          <div class="card-title"><i data-lucide="plug"></i> Charging Status</div>
+          <div class="comp-row"><i data-lucide="link"></i><div class="comp-name">Connected</div><div class="comp-val" style="color:var(--muted)">NO</div></div>
+          <div class="comp-row"><i data-lucide="clock"></i><div class="comp-name">Time to 100%</div><div class="comp-val">1h 10 min</div></div>
+          <div class="comp-row"><i data-lucide="battery-charging"></i><div class="comp-name">Charge Limit</div><div class="comp-val">100%</div></div>
         </div>
       </div>
       <div class="engine-action-row">
-        <button class="engine-action-btn" onclick="navigate('screen-performance')">Performance Metrics <i data-lucide="bar-chart-2"></i></button>
-        <button class="engine-action-btn" onclick="navigate('screen-issues')">Issue Detection <i data-lucide="alert-triangle"></i></button>
+        <button class="engine-action-btn" onclick="navigate('screen-performance')"><i data-lucide="bar-chart-2"></i> Performance Metrics</button>
+        <button class="engine-action-btn" onclick="navigate('screen-issues')"><i data-lucide="alert-triangle"></i> Issue Detection</button>
       </div>
     </section>
 
     <!-- 9. PERFORMANCE -->
     <section id="screen-performance" class="screen">
-      <div class="screen-title"><i data-lucide="bar-chart-2"></i> Performance Metrics</div>
-      <div class="perf-grid">
-        <div class="card perf-chart">
-          <div class="perf-chart-title">Power Output (kW)</div>
-          <div class="bar-chart">
-            <div class="bar-row"><span class="bar-row-label">Motor</span><div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div><span class="bar-row-val">75 kW</span></div>
-            <div class="bar-row"><span class="bar-row-label">Regen</span><div class="bar-bg"><div class="bar-fill green" style="width:30%"></div></div><span class="bar-row-val">30 kW</span></div>
-            <div class="bar-row"><span class="bar-row-label">Total</span><div class="bar-bg"><div class="bar-fill" style="width:60%"></div></div><span class="bar-row-val">60 kW</span></div>
-          </div>
+      <div class="engine-header">
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Speed</div>
+          <div class="engine-stat-value" style="color:var(--cyan)">90 KM/H</div>
         </div>
-        <div class="card perf-chart">
-          <div class="perf-chart-title">Efficiency (%)</div>
-          <div class="bar-chart">
-            <div class="bar-row"><span class="bar-row-label">Drive</span><div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div><span class="bar-row-val">88%</span></div>
-            <div class="bar-row"><span class="bar-row-label">Thermal</span><div class="bar-bg"><div class="bar-fill green" style="width:92%"></div></div><span class="bar-row-val">92%</span></div>
-            <div class="bar-row"><span class="bar-row-label">Overall</span><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div><span class="bar-row-val">85%</span></div>
-          </div>
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Power Usage</div>
+          <div class="engine-stat-value" style="color:var(--cyan)">15 kWh</div>
         </div>
-        <div class="card perf-chart">
-          <div class="perf-chart-title">Speed History (km/h)</div>
-          <div class="bar-chart">
-            <div class="bar-row"><span class="bar-row-label">−5 min</span><div class="bar-bg"><div class="bar-fill" style="width:45%"></div></div><span class="bar-row-val">54</span></div>
-            <div class="bar-row"><span class="bar-row-label">−3 min</span><div class="bar-bg"><div class="bar-fill" style="width:70%"></div></div><span class="bar-row-val">84</span></div>
-            <div class="bar-row"><span class="bar-row-label">Now</span><div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div><span class="bar-row-val">90</span></div>
-          </div>
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Issues Detected</div>
+          <div class="engine-stat-value" style="color:var(--good)">NONE</div>
         </div>
-        <div class="card perf-chart">
-          <div class="perf-chart-title">Consumption (kWh/100km)</div>
-          <div class="bar-chart">
-            <div class="bar-row"><span class="bar-row-label">City</span><div class="bar-bg"><div class="bar-fill" style="width:60%"></div></div><span class="bar-row-val">15.0</span></div>
-            <div class="bar-row"><span class="bar-row-label">Highway</span><div class="bar-bg"><div class="bar-fill" style="width:50%"></div></div><span class="bar-row-val">18.5</span></div>
-            <div class="bar-row"><span class="bar-row-label">Avg</span><div class="bar-bg"><div class="bar-fill green" style="width:55%"></div></div><span class="bar-row-val">16.3</span></div>
+      </div>
+      <div class="perf-section-title"><i data-lucide="activity"></i> Performance Metric</div>
+      <div class="perf-metric-grid">
+        <div class="card perf-metric-card">
+          <div class="perf-metric-icon"><i data-lucide="gauge"></i></div>
+          <div class="perf-metric-label">Tire Pressure</div>
+          <div class="perf-tire-grid">
+            <span class="perf-tire-val">39</span><span class="perf-tire-val">40</span>
+            <span class="perf-tire-val">39</span><span class="perf-tire-val">41</span>
           </div>
+          <div class="perf-metric-unit">PSI</div>
+        </div>
+        <div class="card perf-metric-card">
+          <div class="perf-metric-icon"><i data-lucide="droplets"></i></div>
+          <div class="perf-metric-label">Coolant Flow</div>
+          <div class="perf-metric-value">9 <span class="perf-metric-unit">L/min</span></div>
+        </div>
+        <div class="card perf-metric-card">
+          <div class="perf-metric-icon"><i data-lucide="settings-2"></i></div>
+          <div class="perf-metric-label">Motor Torque</div>
+          <div class="perf-metric-value">420 <span class="perf-metric-unit">Nm</span></div>
+        </div>
+        <div class="card perf-metric-card">
+          <div class="perf-metric-icon"><i data-lucide="activity"></i></div>
+          <div class="perf-metric-label">Motor RPM</div>
+          <div class="perf-metric-value">8500 <span class="perf-metric-unit">RPM</span></div>
         </div>
       </div>
     </section>
 
     <!-- 10. ISSUES -->
     <section id="screen-issues" class="screen">
-      <div class="screen-title"><i data-lucide="shield-check"></i> Issue Detection</div>
-      <div class="issues-list">
-        <div class="issue-item"><div class="issue-dot none"></div><div class="issue-name">Battery System</div><div class="issue-status good">No Issues</div></div>
-        <div class="issue-item"><div class="issue-dot none"></div><div class="issue-name">Motor Drive Unit</div><div class="issue-status good">No Issues</div></div>
-        <div class="issue-item"><div class="issue-dot none"></div><div class="issue-name">Thermal Management</div><div class="issue-status good">Normal</div></div>
-        <div class="issue-item"><div class="issue-dot warn"></div><div class="issue-name">Tire Pressure (Front Left)</div><div class="issue-status warn">Low — 28 PSI</div></div>
-        <div class="issue-item"><div class="issue-dot none"></div><div class="issue-name">Brake System</div><div class="issue-status good">No Issues</div></div>
-        <div class="issue-item"><div class="issue-dot none"></div><div class="issue-name">Charging System</div><div class="issue-status good">No Issues</div></div>
-        <button class="engine-action-btn" style="margin-top:10px;justify-content:center" onclick="navigate('screen-fault')">View Fault Analysis <i data-lucide="file-search-2"></i></button>
+      <div class="engine-header">
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Speed</div>
+          <div class="engine-stat-value" style="color:var(--cyan)">90 KM/H</div>
+        </div>
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Power Usage</div>
+          <div class="engine-stat-value" style="color:var(--cyan)">15 kWh</div>
+        </div>
+        <div class="engine-stat-card card">
+          <div class="engine-stat-label">Issues Detected</div>
+          <div class="engine-stat-value" style="color:var(--danger)">1</div>
+        </div>
+      </div>
+      <div class="issues-alert-card card">
+        <div class="issues-alert-header">
+          <i data-lucide="alert-octagon"></i>
+          CRITICAL SYSTEM FAULT DETECTED
+        </div>
+        <div class="issues-alert-body">
+          <div class="issues-alert-sub">URGENT ISSUE DETECTED. DO NOT PROCEED.</div>
+          <div class="issues-list-compact">
+            <div class="issue-item-compact"><div class="issue-dot warn"></div><span>Tire Pressure (Front Left) — Low: 28 PSI</span></div>
+            <div class="issue-item-compact"><div class="issue-dot none"></div><span>Battery System — No Issues</span></div>
+            <div class="issue-item-compact"><div class="issue-dot none"></div><span>Motor Drive Unit — No Issues</span></div>
+            <div class="issue-item-compact"><div class="issue-dot none"></div><span>Thermal Management — Normal</span></div>
+          </div>
+          <button class="issues-cta-btn" onclick="navigate('screen-fault')"><i data-lucide="file-search-2"></i> Tap to begin fault analysis</button>
+        </div>
       </div>
     </section>
 
     <!-- 11. FAULT ANALYSIS -->
     <section id="screen-fault" class="screen">
-      <div class="screen-title"><i data-lucide="alert-octagon"></i> Fault Analysis</div>
-      <div class="fault-grid">
-        <div class="fault-code-list">
-          <div class="fault-code-item"><div class="fault-code">TPMS-001</div><div class="fault-desc">Front Left Tire Pressure Below Threshold</div></div>
-          <div class="card" style="padding:14px;margin-top:8px">
-            <div style="font-size:14px;color:var(--text-dim);margin-bottom:8px">Other systems</div>
-            <div class="good" style="font-size:17px;display:flex;align-items:center;gap:6px"><i data-lucide="check-circle-2" style="width:18px;height:18px"></i>No fault codes</div>
-          </div>
+      <div class="fault-critical-card">
+        <div class="fault-critical-header">
+          <i data-lucide="alert-octagon"></i>
+          Fault Analysis Complete — Critical
         </div>
-        <div class="fault-detail card">
-          <div class="settings-section-title">TPMS-001 Details</div>
-          <div class="fault-detail-row"><span class="fault-detail-label">Fault Code</span><span class="fault-detail-value">TPMS-001</span></div>
-          <div class="fault-detail-row"><span class="fault-detail-label">System</span><span class="fault-detail-value">Tire Pressure</span></div>
-          <div class="fault-detail-row"><span class="fault-detail-label">Severity</span><span class="fault-detail-value warn">Warning</span></div>
-          <div class="fault-detail-row"><span class="fault-detail-label">Location</span><span class="fault-detail-value">Front Left</span></div>
-          <div class="fault-detail-row"><span class="fault-detail-label">Current</span><span class="fault-detail-value">28 PSI</span></div>
-          <div class="fault-detail-row"><span class="fault-detail-label">Recommended</span><span class="fault-detail-value">35 PSI</span></div>
-          <div class="fault-detail-row"><span class="fault-detail-label">Action</span><span class="fault-detail-value">Inflate at next stop</span></div>
+        <div class="fault-critical-body">
+          <div class="card fault-components-panel">
+            <div class="card-title"><i data-lucide="cpu"></i> Key Components Status</div>
+            <div class="comp-row"><i data-lucide="battery-full"></i><div class="comp-name">Battery Health</div><div class="comp-val">95%</div></div>
+            <div class="comp-row"><i data-lucide="thermometer"></i><div class="comp-name">Motor Temperature</div><div class="comp-val" style="color:var(--danger)">110°C <span style="color:var(--danger)">Critical</span></div></div>
+            <div class="comp-row"><i data-lucide="zap"></i><div class="comp-name">Inverter Temperature</div><div class="comp-val">45°C <span style="color:var(--good)">Normal</span></div></div>
+          </div>
+          <div class="card fault-details-panel">
+            <div class="card-title"><i data-lucide="file-text"></i> Details</div>
+            <div class="fault-detail-row"><span class="fault-detail-label">Fault</span><span class="fault-detail-value" style="color:var(--danger)">Motor Overheat</span></div>
+            <div class="fault-detail-row"><span class="fault-detail-label">Reading</span><span class="fault-detail-value" style="color:var(--danger)">110°C (Critical)</span></div>
+            <div class="fault-detail-row"><span class="fault-detail-label">Severity</span><span class="fault-detail-value" style="color:var(--danger)">CRITICAL</span></div>
+            <div class="fault-detail-row"><span class="fault-detail-label">Action</span><span class="fault-detail-value">Pull over safely immediately</span></div>
+            <p class="fault-detail-desc">Motor overheat. Shutdown imminent. Pull over safely and allow the motor to cool before proceeding.</p>
+          </div>
         </div>
       </div>
     </section>

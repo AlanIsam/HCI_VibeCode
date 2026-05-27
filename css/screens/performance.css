@@ -1,20 +1,79 @@
-/* ── PERFORMANCE ── */
-.perf-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 14px;
-  height: calc(100% - 70px);
+/* ── Performance Metric ── */
+.perf-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text);
+  flex-shrink: 0;
 }
 
-.perf-chart { display: flex; flex-direction: column; }
-.perf-chart-title { font-size: 14px; color: var(--cyan); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px; font-weight: 700; }
+.perf-section-title svg {
+  width: 20px;
+  height: 20px;
+  color: var(--cyan);
+}
 
-.bar-chart { display: flex; flex-direction: column; gap: 10px; flex: 1; justify-content: center; }
+.perf-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+  flex: 1;
+  min-height: 0;
+}
 
-.bar-row { display: flex; align-items: center; gap: 10px; }
-.bar-row-label { font-size: 13px; color: var(--text-dim); width: 55px; flex-shrink: 0; }
-.bar-bg { flex: 1; height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden; }
-.bar-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--cyan)); border-radius: 5px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); }
-.bar-fill.green { background: linear-gradient(90deg, var(--good), #00b8d4); }
-.bar-row-val { font-family: var(--font-data); font-size: 13px; width: 45px; text-align: right; color: var(--text-dim); }
+.perf-metric-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.perf-metric-icon svg {
+  width: 36px;
+  height: 36px;
+  color: var(--cyan);
+}
+
+.perf-metric-label {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.perf-metric-value {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  font-family: var(--font-data);
+  color: var(--text);
+  line-height: 1;
+}
+
+.perf-metric-unit {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.perf-tire-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  width: 100%;
+}
+
+.perf-tire-val {
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: var(--r-sm);
+  padding: 6px 4px;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  font-family: var(--font-data);
+  color: var(--cyan);
+  text-align: center;
+}

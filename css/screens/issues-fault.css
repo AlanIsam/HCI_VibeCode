@@ -1,52 +1,172 @@
-/* ── ISSUES ── */
-.issues-list {
+/* ── Issue Detection ── */
+.issues-alert-card {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  max-height: calc(100% - 70px);
-  overflow-y: auto;
+  overflow: hidden;
+  border-color: rgba(244,67,54,0.4) !important;
+  padding: 0 !important;
 }
 
-.issue-item {
+.issues-alert-header {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 14px 18px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--r-sm);
+  gap: 10px;
+  background: var(--danger);
+  color: #fff;
+  font-size: var(--text-md);
+  font-weight: 700;
+  padding: 14px 20px;
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.issue-name { flex: 1; font-size: 16px; }
-.issue-status { font-family: var(--font-data); font-size: 15px; font-weight: 600; }
+.issues-alert-header svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
 
-/* ── FAULT ── */
-.fault-grid {
-  display: grid;
-  grid-template-columns: 280px 1fr;
+.issues-alert-body {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
-  height: calc(100% - 70px);
+  flex: 1;
 }
 
-.fault-code-item {
-  background: rgba(255,82,82,0.1);
-  border: 1px solid rgba(255,82,82,0.3);
-  border-radius: var(--r-sm);
-  padding: 14px 16px;
-  margin-bottom: 8px;
+.issues-alert-sub {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--text);
 }
 
-.fault-code { font-family: var(--font-data); font-size: 16px; font-weight: 700; color: var(--error); margin-bottom: 4px; }
-.fault-desc { font-size: 14px; color: var(--text-dim); }
+.issues-list-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
 
-.fault-detail { display: flex; flex-direction: column; gap: 8px; }
+.issue-item-compact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--text-md);
+  color: var(--text);
+}
+
+.issue-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.issue-dot.none { background: var(--good); }
+.issue-dot.warn { background: var(--warn); }
+.issue-dot.danger { background: var(--danger); }
+
+.issues-cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--danger);
+  color: #fff;
+  border: none;
+  border-radius: var(--r-pill);
+  padding: 14px 28px;
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.2s;
+}
+
+.issues-cta-btn:hover { background: #d32f2f; }
+
+.issues-cta-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Fault Analysis ── */
+#screen-fault {
+  padding: var(--gap);
+}
+
+.fault-critical-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, rgba(244,67,54,0.2) 0%, rgba(61,34,34,0.4) 100%);
+  border: 1px solid rgba(244,67,54,0.5);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  height: 100%;
+}
+
+.fault-critical-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(90deg, #f44336, #b71c1c);
+  color: #fff;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  padding: 18px 24px;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fault-critical-header svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.fault-critical-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  padding: var(--gap);
+  flex: 1;
+  min-height: 0;
+}
+
+.fault-components-panel,
+.fault-details-panel {
+  background: rgba(10,24,56,0.7);
+  overflow-y: auto;
+}
 
 .fault-detail-row {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
+  align-items: center;
+  padding: 8px 0;
   border-bottom: 1px solid var(--border);
+  font-size: var(--text-md);
 }
 
-.fault-detail-label { color: var(--text-dim); font-size: 15px; }
-.fault-detail-value { font-family: var(--font-data); font-size: 15px; font-weight: 600; }
+.fault-detail-label {
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+.fault-detail-value {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.fault-detail-desc {
+  margin-top: 12px;
+  font-size: var(--text-sm);
+  color: var(--muted);
+  line-height: 1.5;
+}

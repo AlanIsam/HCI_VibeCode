@@ -59,6 +59,8 @@
   background: rgba(0,212,255,0.12);
   color: var(--cyan);
   border-color: rgba(0,212,255,0.25);
+  border-left: 3px solid var(--cyan);
+  padding-left: calc(var(--card-pad) - 3px);
 }
 
 .settings-nav-btn svg { width: 18px; height: 18px; flex-shrink: 0; }

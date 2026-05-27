@@ -164,6 +164,10 @@
   color: var(--text);
 }
 
+.home-tile:hover {
+  box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.25);
+}
+
 /* Tile accent colors and grid positions */
 .home-tile-driving {
   grid-column: 2;

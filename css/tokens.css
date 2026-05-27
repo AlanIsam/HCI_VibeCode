@@ -40,8 +40,8 @@
   --r-pill: 9999px;
   --gap: 16px;
   --card-pad: 20px 24px;
-  --bg: var(--bg-a);
-  --panel: var(--bg-b);
+  --bg: #0b1629;
+  --panel: rgba(255, 255, 255, 0.065);
   --muted: rgba(232, 234, 246, 0.72);
   --danger: var(--error);
   --dock-h: 88px;

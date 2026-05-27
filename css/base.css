@@ -48,7 +48,7 @@ html, body {
   align-items: center;
   justify-content: space-between;
   padding: 0 28px;
-  background: rgba(8,13,30,0.7);
+  background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;

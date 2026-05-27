@@ -95,6 +95,14 @@
   color: var(--text);
 }
 
+/* Battery percentage text in gauge */
+.battery-pct {
+  font-size: var(--text-2xl);
+  font-family: var(--font-data);
+  font-weight: 700;
+  color: var(--cyan);
+}
+
 /* CTA button */
 .battery-cta-title {
   font-size: var(--text-md);

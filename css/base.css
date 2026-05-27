@@ -1,4 +1,10 @@
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
 
 html, body {
   width: var(--dash-w);
@@ -111,12 +117,12 @@ html, body {
 }
 
 .screen-title {
-  font-size: 28px;
+  font-size: var(--text-xl);
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--text);
-  margin-bottom: 22px;
+  margin-bottom: var(--gap);
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border);
   display: flex;

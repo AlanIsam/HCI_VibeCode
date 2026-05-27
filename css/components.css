@@ -2,9 +2,9 @@
 .card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: var(--r);
+  border-radius: var(--r-md);
   backdrop-filter: blur(20px);
-  padding: 20px;
+  padding: var(--card-pad);
   transition: border-color var(--trans), background var(--trans);
 }
 
@@ -104,6 +104,20 @@
 
 .nav-btn svg { width: 22px; height: 22px; }
 .nav-btn.large svg { width: 26px; height: 26px; }
+
+/* Focus visible states for keyboard navigation */
+.nav-btn:focus-visible,
+.card-clickable:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
 
 /* ── VOLUME OVERLAY ── */
 #vol-overlay {

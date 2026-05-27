@@ -42,7 +42,7 @@
   --card-pad: 20px 24px;
   --bg: var(--bg-a);
   --panel: var(--bg-b);
-  --muted: var(--text-dim);
+  --muted: rgba(232, 234, 246, 0.72);
   --danger: var(--error);
   --dock-h: 88px;
   --dock-btn-size: 56px;

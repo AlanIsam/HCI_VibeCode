@@ -184,21 +184,21 @@
 .home-tile-ent svg { color: var(--cyan); }
 
 .home-tile-engine {
-  grid-column: 2;
+  grid-column: 1;
   grid-row: 3;
   background: linear-gradient(135deg, rgba(255,152,0,0.15) 0%, var(--panel) 100%);
 }
 .home-tile-engine svg { color: var(--warn); }
 
 .home-tile-energy {
-  grid-column: 3;
+  grid-column: 2;
   grid-row: 3;
   background: linear-gradient(135deg, rgba(76,175,80,0.15) 0%, var(--panel) 100%);
 }
 .home-tile-energy svg { color: var(--good); }
 
 .home-tile-nav {
-  grid-column: 1;
+  grid-column: 3;
   grid-row: 3;
   background: linear-gradient(135deg, rgba(0,212,255,0.12) 0%, var(--panel) 100%);
 }

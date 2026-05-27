@@ -122,9 +122,9 @@ select:focus-visible {
 /* ── VOLUME OVERLAY ── */
 #vol-overlay {
   position: absolute;
-  bottom: calc(var(--nav-h) + 12px);
-  left: 50%;
-  transform: translateX(-50%) translateY(20px);
+  top: calc(var(--bar-h) + 8px);
+  left: 120px;
+  transform: translateY(-10px);
   background: rgba(8,13,30,0.9);
   border: 1px solid var(--border-hi);
   border-radius: var(--r);
@@ -144,7 +144,7 @@ select:focus-visible {
 #vol-overlay.visible {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
 }
 
 #vol-overlay .vol-label {

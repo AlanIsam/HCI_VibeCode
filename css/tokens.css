@@ -27,8 +27,8 @@
   --text-lg: 18px;
   --text-xl: 24px;
   --text-2xl: 32px;
-  --dash-w: 1366px;
-  --dash-h: 1024px;
+  --dash-w: 100%;
+  --dash-h: 100vh;
   --r: 14px;
   --r-sm: 8px;
   --trans: 0.32s cubic-bezier(0.4, 0, 0.2, 1);

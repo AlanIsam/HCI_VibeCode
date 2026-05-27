@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=1366">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Snoopy — HCI Dashboard</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="css/tokens.css">
@@ -25,14 +25,34 @@
 
   <!-- ── STATUS BAR ── -->
   <header id="status-bar">
+    <!-- Volume controls — top left -->
     <div id="status-left">
+      <button class="status-ctrl-btn" id="btn-mute" onclick="toggleMute()" title="Mute">
+        <i data-lucide="volume-x"></i>
+      </button>
+      <button class="status-ctrl-btn" onclick="adjustVolume(-10)" title="Volume Down">
+        <i data-lucide="volume-1"></i>
+      </button>
+      <button class="status-ctrl-btn" onclick="adjustVolume(10)" title="Volume Up">
+        <i data-lucide="volume-2"></i>
+      </button>
+    </div>
+    <!-- System info — center -->
+    <div id="status-center">
       <span id="status-day">Monday</span>
       <span id="status-time">12:37</span>
-    </div>
-    <div id="status-right">
       <div class="status-item"><i data-lucide="thermometer"></i><span>28°C</span></div>
       <div class="status-item"><i data-lucide="map-pin"></i><span>50 KM</span></div>
       <div class="status-item"><i data-lucide="battery-charging"></i><span>80%</span></div>
+    </div>
+    <!-- Quick controls — top right -->
+    <div id="status-right">
+      <button class="status-ctrl-btn" onclick="navigate('screen-climate-cabin')" title="Climate Control">
+        <i data-lucide="wind"></i>
+      </button>
+      <button class="status-ctrl-btn" onclick="navigate('screen-settings-display')" title="Settings">
+        <i data-lucide="settings"></i>
+      </button>
     </div>
   </header>
 
@@ -64,13 +84,15 @@
       <div class="status-main">All Systems Good</div>
       <div class="status-sub">No issues detected · Tap to review</div>
     </div>
-    <!-- Quick-access tiles — rows 2-3 cols 1-3 (weather takes col 1 row 2) -->
+    <!-- Quick-access tiles — rows 2-3, weather holds col 1 rows 1-2 -->
+    <!-- Row 2: Driving Mode (col 2), Entertainment (col 3) -->
     <div class="card home-tile home-tile-driving card-clickable" onclick="navigate('screen-driving')">
       <i data-lucide="gauge"></i><span>Driving Mode</span>
     </div>
     <div class="card home-tile home-tile-ent card-clickable" onclick="toggleEntSidebar()">
       <i data-lucide="music-2"></i><span>Entertainment</span>
     </div>
+    <!-- Row 3: Engine Status (col 1), Energy (col 2), Navigation (col 3) -->
     <div class="card home-tile home-tile-engine card-clickable" onclick="navigate('screen-engine')">
       <i data-lucide="cpu"></i><span>Engine Status</span>
     </div>
@@ -840,18 +862,6 @@
   <!-- ── BOTTOM DOCK ── -->
   <nav id="bottom-nav">
     <div class="nav-dock">
-      <!-- Audio controls -->
-      <button class="nav-btn" id="btn-mute" onclick="toggleMute()" title="Mute">
-        <i data-lucide="volume-x"></i>
-      </button>
-      <button class="nav-btn" onclick="adjustVolume(-10)" title="Volume Down">
-        <i data-lucide="volume-1"></i>
-      </button>
-      <button class="nav-btn" onclick="adjustVolume(10)" title="Volume Up">
-        <i data-lucide="volume-2"></i>
-      </button>
-      <div class="nav-dock-divider"></div>
-      <!-- System navigation -->
       <button class="nav-btn" onclick="openRecentApps()" title="Recent Apps">
         <i data-lucide="layout-grid"></i>
       </button>
@@ -860,14 +870,6 @@
       </button>
       <button class="nav-btn large" onclick="goBack()" title="Back">
         <i data-lucide="undo-2"></i>
-      </button>
-      <div class="nav-dock-divider"></div>
-      <!-- Quick access -->
-      <button class="nav-btn" onclick="navigate('screen-climate-cabin')" title="Climate Control">
-        <i data-lucide="wind"></i>
-      </button>
-      <button class="nav-btn" onclick="navigate('screen-settings-display')" title="Settings">
-        <i data-lucide="settings"></i>
       </button>
     </div>
   </nav>

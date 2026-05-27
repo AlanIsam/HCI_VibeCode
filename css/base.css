@@ -7,8 +7,8 @@
 }
 
 html, body {
-  width: var(--dash-w);
-  height: var(--dash-h);
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   background: var(--bg-a);
   font-family: var(--font-ui);
@@ -19,8 +19,8 @@ html, body {
 
 /* ── DASHBOARD WRAPPER ── */
 #dashboard {
-  width: var(--dash-w);
-  height: var(--dash-h);
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -44,46 +44,85 @@ html, body {
 /* ── STATUS BAR ── */
 #status-bar {
   height: var(--bar-h);
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 28px;
-  background: rgba(0, 0, 0, 0.2);
+  padding: 0 20px;
+  background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
   position: relative;
   z-index: 10;
+  gap: 12px;
 }
 
+/* Volume buttons — left */
 #status-left {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 6px;
+  justify-content: flex-start;
+}
+
+/* System info — center */
+#status-center {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   font-family: var(--font-data);
-  font-size: 15px;
-  letter-spacing: 0.05em;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 #status-day { color: var(--text-dim); font-weight: 400; }
-#status-time { color: var(--cyan); font-weight: 700; font-size: 17px; }
+#status-time { color: var(--cyan); font-weight: 700; font-size: 16px; }
 
+/* Climate + Settings — right */
 #status-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 6px;
+  justify-content: flex-end;
 }
+
+/* Small icon buttons in the status bar */
+.status-ctrl-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--border);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--trans), border-color var(--trans), box-shadow 0.15s ease;
+  flex-shrink: 0;
+}
+
+.status-ctrl-btn:hover {
+  background: rgba(0, 212, 255, 0.14);
+  border-color: var(--cyan);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+}
+
+.status-ctrl-btn:active { transform: scale(0.91); }
+.status-ctrl-btn svg { width: 18px; height: 18px; }
+.status-ctrl-btn.muted { color: var(--error); border-color: var(--error); }
 
 .status-item {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   font-family: var(--font-data);
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-dim);
 }
 
-.status-item svg { width: 16px; height: 16px; color: var(--cyan); }
+.status-item svg { width: 15px; height: 15px; color: var(--cyan); }
 
 /* ── MAIN CONTENT ── */
 #content {

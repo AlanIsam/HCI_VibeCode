@@ -87,31 +87,42 @@
     <section id="screen-battery" class="screen">
       <div class="screen-title"><i data-lucide="battery-charging"></i> Battery Status &amp; Charging</div>
       <div class="battery-grid">
-        <div class="card" style="grid-column:1;grid-row:1/3">
-          <div class="card-title">Key Components</div>
-          <div class="comp-row"><i data-lucide="activity"></i><div class="comp-name">Battery Health</div><div class="comp-val">95%</div></div>
-          <div class="comp-row"><i data-lucide="thermometer"></i><div class="comp-name">Motor Temperature</div><div class="comp-val">45°C <span class="good">Normal</span></div></div>
-          <div class="comp-row"><i data-lucide="cpu"></i><div class="comp-name">Inverter Temp</div><div class="comp-val">52°C <span class="good">Normal</span></div></div>
-          <div class="comp-row" style="margin-top:20px;border-top:1px solid var(--border);padding-top:14px"><i data-lucide="zap"></i><div class="comp-name">Battery Remaining</div><div class="comp-val" style="color:var(--cyan)">80%</div></div>
-          <div class="comp-row"><i data-lucide="map-pin"></i><div class="comp-name">Remaining Distance</div><div class="comp-val" style="color:var(--cyan)">105 KM</div></div>
-          <div class="comp-row"><i data-lucide="milestone"></i><div class="comp-name">Distance Travelled</div><div class="comp-val">10,000 KM</div></div>
+        <!-- Left: Key Components Status -->
+        <div class="card battery-components">
+          <div class="card-title battery-card-title"><i data-lucide="cpu"></i> Key Components Status</div>
+          <div class="comp-row"><i data-lucide="battery-full"></i><div class="comp-name">Battery Health</div><div class="comp-val">95%</div></div>
+          <div class="comp-row"><i data-lucide="thermometer"></i><div class="comp-name">Motor Temperature</div><div class="comp-val">45°C <span style="color:var(--good)">Normal</span></div></div>
+          <div class="comp-row"><i data-lucide="zap"></i><div class="comp-name">Inverter Temperature</div><div class="comp-val">52°C <span style="color:var(--good)">Normal</span></div></div>
         </div>
-        <div class="card" style="grid-column:2;grid-row:1;display:flex;align-items:center;justify-content:center">
-          <svg width="200" height="200" viewBox="0 0 200 200">
-            <defs>
-              <linearGradient id="battGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#3d6fff"/><stop offset="100%" stop-color="#00d4ff"/>
-              </linearGradient>
-            </defs>
-            <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="16"/>
-            <circle cx="100" cy="100" r="80" fill="none" stroke="url(#battGrad)" stroke-width="16" stroke-linecap="round" stroke-dasharray="502" stroke-dashoffset="100" transform="rotate(-90 100 100)"/>
-            <text x="100" y="92" text-anchor="middle" fill="#e8eaf6" font-family="JetBrains Mono,monospace" font-size="36" font-weight="700">80%</text>
-            <text x="100" y="116" text-anchor="middle" fill="rgba(232,234,246,0.5)" font-family="Rajdhani,sans-serif" font-size="14">Battery</text>
-          </svg>
+        <!-- Right col top: Battery gauge + Vehicle Status -->
+        <div class="card battery-status-card">
+          <div class="card-title battery-card-title"><i data-lucide="gauge"></i> Vehicle Status</div>
+          <div class="battery-gauge-row">
+            <svg width="120" height="120" viewBox="0 0 120 120" class="battery-gauge-svg">
+              <defs>
+                <linearGradient id="battGrad2" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#3d6fff"/><stop offset="100%" stop-color="#00d4ff"/>
+                </linearGradient>
+              </defs>
+              <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
+              <circle cx="60" cy="60" r="48" fill="none" stroke="url(#battGrad2)" stroke-width="10" stroke-linecap="round" stroke-dasharray="301" stroke-dashoffset="60" transform="rotate(-90 60 60)"/>
+              <text x="60" y="55" text-anchor="middle" fill="#e8eaf6" font-family="JetBrains Mono,monospace" font-size="22" font-weight="700">80%</text>
+              <text x="60" y="70" text-anchor="middle" fill="rgba(232,234,246,0.5)" font-family="Rajdhani,sans-serif" font-size="11">Battery</text>
+            </svg>
+            <div class="battery-stat-list">
+              <div class="battery-stat-row"><span class="battery-stat-label">Battery Remaining</span><span class="battery-stat-val" style="color:var(--cyan)">80%</span></div>
+              <div class="battery-stat-row"><span class="battery-stat-label">Remaining Distance</span><span class="battery-stat-val" style="color:var(--cyan)">105 KM</span></div>
+              <div class="battery-stat-row"><span class="battery-stat-label">Distance Travelled</span><span class="battery-stat-val">10,000 KM</span></div>
+            </div>
+          </div>
         </div>
-        <div class="card charge-btn card-clickable" style="grid-column:2;grid-row:2" onclick="navigate('screen-charging')">
-          <div><div class="charge-btn-text">Find Nearest Charging Station</div><div style="font-size:13px;color:var(--text-dim);margin-top:4px">3 stations nearby</div></div>
-          <i data-lucide="map-pin" style="width:36px;height:36px;color:var(--cyan)"></i>
+        <!-- Right col bottom: Find Charging CTA -->
+        <div class="card battery-charge-cta card-clickable" onclick="navigate('screen-charging')">
+          <div class="battery-cta-text">
+            <div class="battery-cta-title">Find Nearest Charging Station</div>
+            <div class="battery-cta-sub">3 stations nearby</div>
+          </div>
+          <i data-lucide="map-pin" style="width:32px;height:32px;color:var(--cyan)"></i>
         </div>
       </div>
     </section>

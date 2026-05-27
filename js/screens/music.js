@@ -73,13 +73,25 @@ function nextTrack() {
 
 function selectTrack(idx) { isPlaying = false; loadTrack(idx); togglePlay(); }
 
+function toggleShuffle() {
+  const btn = document.getElementById('shuffle-btn');
+  if (!btn) return;
+  btn.classList.toggle('active');
+}
+
+function toggleRepeat() {
+  const btn = document.getElementById('repeat-btn');
+  if (!btn) return;
+  btn.classList.toggle('active');
+}
+
 function renderPlaylist() {
   const c = document.getElementById('playlist-items');
   if (!c) return;
   c.innerHTML = TRACKS.map((t, i) => `
     <div class="playlist-item ${i === currentTrack ? 'active' : ''}" onclick="selectTrack(${i})">
       <span class="playlist-num">${i === currentTrack && isPlaying ? '▶' : i + 1}</span>
-      <div class="playlist-info"><div class="playlist-song">${t.title}</div><div class="playlist-artist">${t.artist}</div></div>
+      <div class="playlist-info"><div class="playlist-name">${t.title}</div><div class="playlist-artist">${t.artist}</div></div>
       <span class="playlist-dur">${fmtTime(t.dur)}</span>
     </div>`).join('');
 }

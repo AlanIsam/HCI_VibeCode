@@ -24,6 +24,12 @@
   cursor: pointer;
 }
 
+.ent-tile:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  transform: translateY(-2px);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
 .ent-tile svg {
   width: 40px;
   height: 40px;
@@ -65,11 +71,17 @@
   align-items: center;
   gap: 12px;
   justify-content: center;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: var(--card-pad);
 }
 
 .music-art {
   width: 160px;
   height: 160px;
+  /* Fallback for browsers without color-mix() support */
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(61, 111, 255, 0.3));
   background: linear-gradient(135deg, color-mix(in srgb, var(--cyan) 20%, transparent), color-mix(in srgb, var(--blue) 30%, transparent));
   border-radius: var(--r-xl);
   display: flex;
@@ -149,8 +161,8 @@
 }
 
 .music-ctrl-btn:hover {
-  background: var(--panel);
-  border-color: rgba(0,212,255,0.3);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(0, 212, 255, 0.3);
 }
 
 .music-ctrl-btn.play {
@@ -225,10 +237,6 @@
   flex-shrink: 0;
 }
 
-.playlist-art {
-  font-size: 28px;
-  flex-shrink: 0;
-}
 
 .playlist-info {
   flex: 1;
@@ -301,8 +309,8 @@
 }
 
 .yt-suggestion:hover {
-  background: var(--border);
-  border-color: rgba(0,212,255,0.2);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(0, 212, 255, 0.2);
 }
 
 .yt-thumb {

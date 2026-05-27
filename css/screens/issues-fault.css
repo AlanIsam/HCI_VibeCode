@@ -13,7 +13,7 @@
   align-items: center;
   gap: 10px;
   background: var(--danger);
-  color: #fff;
+  color: #ffffff;
   font-size: var(--text-md);
   font-weight: 700;
   padding: 14px 20px;
@@ -75,7 +75,7 @@
   justify-content: center;
   gap: 8px;
   background: var(--danger);
-  color: #fff;
+  color: #ffffff;
   border: none;
   border-radius: var(--r-pill);
   padding: 14px 28px;
@@ -87,7 +87,7 @@
   transition: background 0.2s;
 }
 
-.issues-cta-btn:hover { background: #d32f2f; }
+.issues-cta-btn:hover { background: color-mix(in srgb, var(--danger) 75%, black); }
 
 .issues-cta-btn svg {
   width: 18px;
@@ -114,8 +114,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: linear-gradient(90deg, #f44336, #b71c1c);
-  color: #fff;
+  background: linear-gradient(90deg, var(--danger), color-mix(in srgb, var(--danger) 55%, black));
+  color: #ffffff;
   font-size: var(--text-lg);
   font-weight: 700;
   padding: 18px 24px;

@@ -46,7 +46,10 @@
   min-height: 0;
 }
 
-.card-title {
+#screen-engine .card-title,
+#screen-performance .card-title,
+#screen-issues .card-title,
+#screen-fault .card-title {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -54,9 +57,13 @@
   font-weight: 600;
   color: var(--text);
   margin-bottom: 16px;
+  text-transform: none;
 }
 
-.card-title svg {
+#screen-engine .card-title svg,
+#screen-performance .card-title svg,
+#screen-issues .card-title svg,
+#screen-fault .card-title svg {
   width: 18px;
   height: 18px;
   color: var(--cyan);

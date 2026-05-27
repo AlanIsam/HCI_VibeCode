@@ -1,15 +1,31 @@
 # AI assistant artifacts
 .claude/
+.claude*/
 .cursor/
+.cursorrules
+.cursorignore
 .aider*
 .roo/
+.roomodes
 .copilot*
+.github/copilot-instructions.md
+.continue/
+.codeium/
+.windsurf/
+.windsurfrules
+.tabnine/
+.cody/
+.gemini/
+.zed/
+GEMINI.md
 
 # Planning / spec docs (AI-generated)
 docs/superpowers/
 *.plan.md
 AGENTS.md
 CLAUDE.md
+
+# Figma QA exports
 figma-qa/
 
 # OS / editor junk

@@ -5,12 +5,12 @@
 
 .home-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-template-areas:
-    "weather  clock   status  status"
-    "weather  drive   ent     energy"
-    ".        engine  nav     .     ";
+    "weather weather weather clock   clock   clock   status  status  status"
+    "weather weather weather drive   drive   ent     ent     energy  energy"
+    ".       .       .       engine  engine  engine  nav     nav     nav   ";
   gap: var(--gap);
   height: 100%;
 }

@@ -10,6 +10,7 @@ docs/superpowers/
 *.plan.md
 AGENTS.md
 CLAUDE.md
+figma-qa/
 
 # OS / editor junk
 Thumbs.db

@@ -341,103 +341,41 @@
       </div>
     </section>
 
-    <!-- 7. DRIVING MODE -->
+    <!-- 6. DRIVING MODE -->
     <section id="screen-driving" class="screen">
-      <div class="screen-title"><i data-lucide="gauge"></i> Driving Mode</div>
       <div class="driving-layout">
-        <!-- Car SVG: Tesla Model 3 style side profile -->
-        <div class="driving-car-wrap">
-          <div class="car-stage">
-            <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="cBody" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#2d4fc5"/><stop offset="65%" stop-color="#1e3499"/><stop offset="100%" stop-color="#0d1a4f"/>
-                </linearGradient>
-                <linearGradient id="cRoof" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#3a55d5"/><stop offset="100%" stop-color="#1e3499"/>
-                </linearGradient>
-                <linearGradient id="cGlass" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="rgba(160,210,255,0.25)"/><stop offset="100%" stop-color="rgba(80,140,200,0.08)"/>
-                </linearGradient>
-                <radialGradient id="cWheel" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#2a2a3a"/><stop offset="75%" stop-color="#0d0d14"/><stop offset="100%" stop-color="#1a1a28"/>
-                </radialGradient>
-                <filter id="headGlow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-              </defs>
-              <!-- Ground shadow -->
-              <ellipse cx="280" cy="190" rx="238" ry="9" fill="rgba(0,0,0,0.45)"/>
-              <!-- Body lower sill -->
-              <path d="M42 148 Q45 128 65 118 L95 104 L120 84 Q148 62 192 55 L318 53 Q368 53 408 62 L445 78 L478 104 L500 118 Q515 127 518 148 L518 162 Q518 168 512 170 L48 170 Q42 168 42 162 Z" fill="url(#cBody)"/>
-              <!-- Roof -->
-              <path d="M127 104 Q154 64 194 56 L318 54 Q372 54 412 64 L450 104 Z" fill="url(#cRoof)"/>
-              <!-- Front windshield -->
-              <path d="M132 102 Q160 68 197 60 L286 58 L286 102 Z" fill="url(#cGlass)" stroke="rgba(200,230,255,0.18)" stroke-width="1"/>
-              <!-- Rear window -->
-              <path d="M296 58 L410 62 Q440 70 450 102 L296 102 Z" fill="url(#cGlass)" stroke="rgba(200,230,255,0.18)" stroke-width="1"/>
-              <!-- Center pillar -->
-              <line x1="286" y1="58" x2="286" y2="170" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
-              <!-- Door seams -->
-              <line x1="132" y1="102" x2="132" y2="170" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-              <line x1="450" y1="102" x2="450" y2="170" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-              <!-- Door handles -->
-              <rect x="195" y="128" width="28" height="6" rx="3" fill="rgba(255,255,255,0.18)"/>
-              <rect x="340" y="128" width="28" height="6" rx="3" fill="rgba(255,255,255,0.18)"/>
-              <!-- Front wheel arch + wheel -->
-              <ellipse cx="136" cy="170" rx="35" ry="8" fill="rgba(0,0,0,0.3)"/>
-              <circle cx="136" cy="164" r="32" fill="url(#cWheel)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-              <circle cx="136" cy="164" r="19" fill="rgba(0,0,0,0.4)" stroke="rgba(0,212,255,0.5)" stroke-width="1.5"/>
-              <g stroke="rgba(0,212,255,0.35)" stroke-width="1.5" transform="translate(136,164)">
-                <line x1="0" y1="-16" x2="0" y2="16"/>
-                <line x1="-16" y1="0" x2="16" y2="0"/>
-                <line x1="-11" y1="-11" x2="11" y2="11"/>
-                <line x1="11" y1="-11" x2="-11" y2="11"/>
-              </g>
-              <circle cx="136" cy="164" r="4" fill="rgba(0,212,255,0.8)"/>
-              <!-- Rear wheel -->
-              <ellipse cx="416" cy="170" rx="35" ry="8" fill="rgba(0,0,0,0.3)"/>
-              <circle cx="416" cy="164" r="32" fill="url(#cWheel)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-              <circle cx="416" cy="164" r="19" fill="rgba(0,0,0,0.4)" stroke="rgba(0,212,255,0.5)" stroke-width="1.5"/>
-              <g stroke="rgba(0,212,255,0.35)" stroke-width="1.5" transform="translate(416,164)">
-                <line x1="0" y1="-16" x2="0" y2="16"/>
-                <line x1="-16" y1="0" x2="16" y2="0"/>
-                <line x1="-11" y1="-11" x2="11" y2="11"/>
-                <line x1="11" y1="-11" x2="-11" y2="11"/>
-              </g>
-              <circle cx="416" cy="164" r="4" fill="rgba(0,212,255,0.8)"/>
-              <!-- Front headlight -->
-              <path d="M511 128 Q520 132 520 140 Q520 148 511 152" fill="none" stroke="rgba(0,212,255,0.9)" stroke-width="3" stroke-linecap="round"/>
-              <rect x="506" y="135" width="14" height="6" rx="3" fill="rgba(0,212,255,0.85)" filter="url(#headGlow)"/>
-              <!-- Rear tail light -->
-              <rect x="40" y="134" width="14" height="6" rx="3" fill="rgba(255,60,60,0.85)"/>
-              <!-- Bottom accent line -->
-              <line x1="62" y1="161" x2="498" y2="161" stroke="rgba(0,212,255,0.18)" stroke-width="1"/>
-            </svg>
-            <div class="car-mode-glow"></div>
+        <!-- Left: Car visual -->
+        <div class="driving-car-panel">
+          <div class="driving-car-card card">
+            <div class="driving-car-visual">🚗</div>
+            <div class="driving-car-label">Snoopy EV</div>
+            <div class="driving-mode-badge" id="driving-mode-active">AUTO</div>
           </div>
         </div>
-        <!-- Right panel -->
-        <div class="driving-info-panel">
-          <div>
-            <div class="driving-mode-selected"><i data-lucide="flag"></i> Driving Mode Selected</div>
-            <div class="driving-mode-name" id="driving-mode-name">AUTO</div>
+        <!-- Right: Mode selector -->
+        <div class="driving-mode-panel">
+          <div class="driving-mode-title">Select Driving Mode</div>
+          <div class="driving-mode-list">
+            <button class="mode-btn active" id="mode-btn-auto" onclick="selectMode('auto')">
+              <i data-lucide="gauge"></i>
+              <span class="mode-btn-name">AUTOMATIC</span>
+              <span class="mode-btn-sub">Balanced performance &amp; efficiency</span>
+            </button>
+            <button class="mode-btn" id="mode-btn-eco" onclick="selectMode('eco')">
+              <i data-lucide="leaf"></i>
+              <span class="mode-btn-name">ECONOMY</span>
+              <span class="mode-btn-sub">Maximum range, reduced power</span>
+            </button>
+            <button class="mode-btn" id="mode-btn-sport" onclick="selectMode('sport')">
+              <i data-lucide="zap"></i>
+              <span class="mode-btn-name">SPORT</span>
+              <span class="mode-btn-sub">Full power, performance priority</span>
+            </button>
           </div>
-          <div class="driving-mode-stats">
-            <div class="driving-stat-row"><span class="driving-stat-label">Max Power</span><span class="driving-stat-value" id="driving-stat-power">75 kW</span></div>
-            <div class="driving-stat-row"><span class="driving-stat-label">Est. Range</span><span class="driving-stat-value" id="driving-stat-range">105 KM</span></div>
-            <div class="driving-stat-row"><span class="driving-stat-label">Regen</span><span class="driving-stat-value" id="driving-stat-regen">18%</span></div>
-          </div>
-          <div class="mode-select-btns">
-            <button class="mode-btn active" id="mode-auto" onclick="selectMode('auto')">
-              AUTOMATIC <span class="mode-sub">75 kW · 105 KM</span>
-            </button>
-            <button class="mode-btn" id="mode-eco" onclick="selectMode('eco')">
-              ECONOMY <span class="mode-sub">45 kW · 130 KM</span>
-            </button>
-            <button class="mode-btn" id="mode-sport" onclick="selectMode('sport')">
-              SPORT <span class="mode-sub">150 kW · 75 KM</span>
-            </button>
+          <div class="driving-mode-stats card" id="mode-stats-display">
+            <div class="mode-stat-row"><span class="mode-stat-label">Power</span><span class="mode-stat-val" id="mode-stat-power">—</span></div>
+            <div class="mode-stat-row"><span class="mode-stat-label">Regen</span><span class="mode-stat-val" id="mode-stat-regen">—</span></div>
+            <div class="mode-stat-row"><span class="mode-stat-label">Range</span><span class="mode-stat-val" id="mode-stat-range">—</span></div>
           </div>
         </div>
       </div>

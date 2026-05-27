@@ -92,20 +92,27 @@ function initSliders() {
 /* ══ DRIVING MODE ══ */
 function selectMode(mode) {
   currentMode = mode;
-  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-  const btn = document.getElementById('mode-' + mode);
+  // Remove active from all mode buttons
+  document.querySelectorAll('.mode-btn').forEach(function(btn) {
+    btn.classList.remove('active');
+  });
+  // Activate selected
+  var btn = document.getElementById('mode-btn-' + mode);
   if (btn) btn.classList.add('active');
-  const stats = MODE_STATS[mode];
-  const nameEl = document.getElementById('driving-mode-name');
-  const powerEl = document.getElementById('driving-stat-power');
-  const rangeEl = document.getElementById('driving-stat-range');
-  const regenEl = document.getElementById('driving-stat-regen');
-  if (nameEl) { nameEl.textContent = mode.toUpperCase(); nameEl.style.color = stats.color; }
-  if (powerEl) powerEl.textContent = stats.power;
-  if (rangeEl) rangeEl.textContent = stats.range;
-  if (regenEl) regenEl.textContent = stats.regen;
-  const glow = document.querySelector('.car-mode-glow');
-  if (glow) glow.style.background = `radial-gradient(ellipse, ${stats.color}55 0%, transparent 70%)`;
+  // Update badge
+  var badge = document.getElementById('driving-mode-active');
+  var labels = { auto: 'AUTO', eco: 'ECO', sport: 'SPORT' };
+  if (badge) badge.textContent = labels[mode] || mode.toUpperCase();
+  // Update stats from MODE_STATS (defined in state.js)
+  var stats = (typeof MODE_STATS !== 'undefined') ? MODE_STATS[mode] : null;
+  if (stats) {
+    var pw = document.getElementById('mode-stat-power');
+    var rg = document.getElementById('mode-stat-regen');
+    var rn = document.getElementById('mode-stat-range');
+    if (pw) pw.textContent = stats.power || '—';
+    if (rg) rg.textContent = stats.regen || '—';
+    if (rn) rn.textContent = stats.range || '—';
+  }
 }
 
 /* ══ SETTINGS TOGGLES ══ */
